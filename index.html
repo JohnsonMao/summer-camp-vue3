@@ -39,20 +39,20 @@
                 <div class="col" v-for="person in persons">
                     <div class="card h-100"
                     :class="
-                    (person.location.postcode % 3) == '0' ? 
-                    (person.location.postcode % 4) == '0' ? 'bg-warning' 
+                    (person.location.postcode % 6) == '0' ? 
+                    (person.location.postcode % 11) == '0' ? 'bg-warning' 
                     : 'bg-success text-light'
                     : 'bg-light'
                     ">
                         <div class="position-relative overflow-hidden">
                             <div class="position-absolute top-0 start-0">
                                 <span 
-                                v-if="person.location.postcode % 12 == '0'"
+                                v-if="person.location.postcode % 66 == '0'"
                                 class="bg-warning text-light rounded-end fs-4 p-1"
                                 >
                                 SSR</span>
                                 <span 
-                                v-else-if="person.location.postcode % 3 == '0'"
+                                v-else-if="person.location.postcode % 6 == '0'"
                                 class="bg-success text-light rounded-end fs-4 p-1"
                                 >
                                 SR</span>
@@ -84,10 +84,16 @@
                                 )
                             </h2>
                             <p class="card-text">
-                                dob：{{ person.dob.date }}
+                                dob：
+                                    {{ new Date(person.dob.date).getMonth() }}
+                                    {{ new Date(person.dob.date).getDate() }}
+                                    {{ new Date(person.dob.date).getFullYear() }}
                             </p>
                             <p class="card-text">
-                                registered：{{ person.registered.date }}
+                                registered：
+                                {{ new Date(person.registered.date).getMonth() }}
+                                {{ new Date(person.registered.date).getDate() }}
+                                {{ new Date(person.registered.date).getFullYear() }}
                             </p>
                             <div class="position-absolute bottom-0 end-0 fs-4 m-2">
                                 <a href="mailto:{{ person.email }}" class="btn btn-outline-dark rounded-circle border-0 lh-1 p-2">
