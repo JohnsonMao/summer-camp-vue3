@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Camp Vue3</title>
+
+    <!-- ico -->
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+
+    <!-- bootstrap 5 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    
+</head>
+
+<body>
+    <div id="app">
+        <header class="navbar">
+            <div class="container">
+                <h1>
+                    <a href="#">
+                        <img src="../summer-camp.png" alt="summer camp">
+                    </a>
+                </h1>
+                <div>
+                    <button type="button" class="btn btn-outline-primary"
+                    @click="getData">
+                        抽卡
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                <div class="col" v-for="person in persons">
+                    <div class="card h-100"
+                    :class="
+                    (person.location.postcode % 6) == '0' ? 
+                    (person.location.postcode % 11) == '0' ? 'bg-warning' 
+                    : 'bg-success text-light'
+                    : 'bg-light'
+                    ">
+                        <div class="position-relative overflow-hidden">
+                            <div class="position-absolute top-0 start-0">
+                                <span 
+                                v-if="person.location.postcode % 66 == '0'"
+                                class="bg-warning text-light rounded-end fs-4 p-1"
+                                >
+                                SSR</span>
+                                <span 
+                                v-else-if="person.location.postcode % 6 == '0'"
+                                class="bg-success text-light rounded-end fs-4 p-1"
+                                >
+                                SR</span>
+                                <span 
+                                v-else
+                                class="bg-light text-dark rounded-end fs-4 p-1"
+                                >
+                                R</span>
+                            </div>
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <button type="button" 
+                                class="btn btn-outline-danger rounded-circle lh-1 p-2" 
+                                @click="person.favorite = ! person.favorite">
+                                    <i v-if="!person.favorite" 
+                                    class="bi bi-heart fs-6"></i>
+                                    <i v-else
+                                    class="bi bi-heart-fill fs-6"></i>
+                                </button>
+                            </div>
+                            <img :src="person.picture.large" class="card-img-top" />
+                            <div class="position-absolute bottom-0 end-0 fs-4 m-2">
+                                <span v-if="person.gender === 'male'">👨</span>
+                                <span v-else>👩</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title fs-5">
+                                {{ person.name.title }}
+                                {{ person.name.first }}
+                                {{ person.name.last }}
+                                <br/>
+                                (
+                                    {{ person.dob.age }}
+                                )
+                            </h2>
+                            <p class="card-text">
+                                dob：
+                                    {{ new Date(person.dob.date).getMonth() }}
+                                    {{ new Date(person.dob.date).getDate() }}
+                                    {{ new Date(person.dob.date).getFullYear() }}
+                            </p>
+                            <p class="card-text">
+                                registered：
+                                {{ new Date(person.registered.date).getMonth() }}
+                                {{ new Date(person.registered.date).getDate() }}
+                                {{ new Date(person.registered.date).getFullYear() }}
+                            </p>
+                            <div class="position-absolute bottom-0 end-0 fs-4 m-2">
+                                <a href="mailto:{{ person.email }}" class="btn btn-outline-dark rounded-circle border-0 lh-1 p-2">
+                                    <i class="bi bi-envelope fs-6"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue 3 CDN -->
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+
+    <!-- axios CDN -->
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script type="module">
+        import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.1.4/vue.esm-browser.min.js'
+        createApp({
+            data(){
+                return{
+                    persons:[]
+                }
+            },
+            methods:{
+                getData(){
+                axios
+                    .get('https://randomuser.me/api/?results=8&exc=login')
+                    .then(response => {this.persons = response.data.results
+                    ,console.log(this.persons)
+                    })
+                    .catch(error => console.log(error));
+                },
+            },
+            mounted(){
+                this.getData();
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
