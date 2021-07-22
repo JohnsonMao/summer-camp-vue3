@@ -19,89 +19,135 @@
         html,
         body {
             height: 100%;
+            line-height: 2;
+            font-size: 1.5rem;
+        }
+        select {
+            text-align-last: center;
         }
         </style>
     </head>
 
     <body>
         <div id="app" class="h-100 d-flex align-items-center">
-        <div
-            class="container"
-        >
-        <div class="row justify-content-center">
-            <div class="col-6">
-            <div class="row">
-                <div class="col-md-6">
-                <label for="exampleFormControlInput1" class="form-label"
-                    >第一個數字</label
-                >
-                <input
-                    id="num1"
-                    type="number"
-                    class="form-control"
-                    placeholder="請輸入要計算的第一個數字"
-                />
-                </div>
-                <div class="col-md-6">
-                <label for="num2" class="form-label">第二個數字</label>
-                <input
-                    id="num2"
-                    type="number"
-                    class="form-control"
-                    placeholder="請輸入要計算的第二個數字"
-                />
-                </div>
-                <div class="col-md-12 mt-3">
-                <div class="btn-group w-100">
-                    <button
-                    type="button"
-                    class="btn btn-outline-primary w-25"
-                    >
-                    +
-                    </button>
-                    <button
-                    type="button"
-                    class="btn btn-outline-primary w-25"
-                    >
-                    -
-                    </button>
-                    <button
-                    type="button"
-                    class="btn btn-outline-primary w-25"
-                    >
-                    *
-                    </button>
-                    <button
-                    type="button"
-                    class="btn btn-outline-primary w-25"
-                    >
-                    /
-                    </button>
-                </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="row h-25 g-1 align-items-center mb-1">
+                            <div class="col-4 h-75">
+                                <input class="w-100" type="number" @keyDown="test">
+                            </div>
+                            <div class="col-1 h-75">
+                                <select class="w-100 h-100" name="sign" id="sign">
+                                    <option value="plus">
+                                        +
+                                    </option>
+                                    <option value="minus">
+                                        -
+                                    </option>
+                                    <option value="times">
+                                        ×
+                                    </option>
+                                    <option value="divided">
+                                        ÷
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-4 h-75">
+                                <input class="w-100" type="number" @keyDown="test">
+                            </div>
+                            <div class="col-3">
+                                <h2 class="fs-4">= NaN</h2>
+                            </div>
+                        </div>
+                        <div class="row g-1">
+                            <div class="col-4">
+                                <div class="row row-cols-4 g-1">
+                                    <div class="col">
+                                        <button class="w-100" type="button">7</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">8</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">9</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">/</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">4</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">5</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">6</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">*</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">1</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">2</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">3</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">-</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">0</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">.</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">=</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="w-100" type="button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-8">
+                                <h2 class="text-center fs-4">歷史紀錄</h2>
+                                <ul>
+                                    <li>1 + 1 = 2</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button
-                type="button"
-                class="btn btn-outline-primary d-block mt-3 w-100"
-            >
-                計算結果
-            </button>
-            <h4 class="mt-3">結果：100</h4>
-            </div>
-            <div class="col-3">
-            <h5>歷史紀錄</h5>
-            <ul>
-                <li>
-                1 + 1 = 2
-                </li>
-            </ul>
-            </div>
-        </div>
-        </div>
         </div>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
-        Vue.createApp({}).mount('#app');
+        Vue.createApp({
+            date(){
+                return {
+                    
+                }
+            },
+            methods: {
+                test(event){
+                    // 解構賦值獲取 keyCode, target
+                    const { keyCode, target } = event;
+                    ( keyCode >= 96 && keyCode <= 111 ) ? console.log('numberKeyboard', keyCode) :
+                    ( keyCode >= 48 && keyCode <= 57 ) ? console.log('0~9', keyCode) :
+                    ( keyCode === 13 ) ? console.log('enter', keyCode) :
+                    ( keyCode === 46 ) ? console.log('delete', keyCode) :
+                    ( keyCode === 8 ) ? console.log('backspace', keyCode) : '';
+                }
+            },
+            mounted(){
+                
+            }
+        }).mount('#app');
         </script>
     </body>
 </html>
