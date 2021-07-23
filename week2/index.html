@@ -21,100 +21,130 @@
             height: 100%;
             line-height: 2;
             font-size: 1.5rem;
+            background: no-repeat linear-gradient(174deg, #ffd370 0%, #ffd370 56%, #FFF 56%, #FFF 100%);
         }
         select {
             text-align-last: center;
+        }
+        .computer {
+            background: #333;
+        }
+        .screen-num {
+            border: 0;
+            width: 100%;
+        }
+        .screen-num:focus {
+            border: 0;
+            outline: 0;
+        }
+        .btn-clear {
+            background: #f55;
+            color: #fff;
+            height: 100%;
+            font-size: 1rem;
+        }
+        
+        .deg45 {
+            display: inline-block;
+            transform: rotate(45deg);
+            background: #fff;
+            width: 1px;
+            height: 100%;
+        }
+        .top-35 {
+            top: 35%;
+        }
+        .bottom-35 {
+            bottom: 35%;
         }
         </style>
     </head>
 
     <body>
-        <div id="app" class="h-100 d-flex align-items-center">
+        <div id="app" class="h-100 d-flex align-items-center" @keyDown="test">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col">
-                        <div class="row h-25 g-1 align-items-center mb-1">
-                            <div class="col-4 h-75">
-                                <input class="w-100" type="number" @keyDown="test">
+                <div class="computer p-1">
+                    <div class="border border-dark mb-1">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-8">
+                                <input class="screen-num px-2" type="text" readonly="readonly" placeholder="0" v-model="show">
                             </div>
-                            <div class="col-1 h-75">
-                                <select class="w-100 h-100" name="sign" id="sign">
-                                    <option value="plus">
-                                        +
-                                    </option>
-                                    <option value="minus">
-                                        -
-                                    </option>
-                                    <option value="times">
-                                        ×
-                                    </option>
-                                    <option value="divided">
-                                        ÷
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-4 h-75">
-                                <input class="w-100" type="number" @keyDown="test">
-                            </div>
-                            <div class="col-3">
-                                <h2 class="fs-4">= NaN</h2>
+                            <div class="col">
+                                <h2 class="fs-4 m-0">= {{ result }}</h2>
                             </div>
                         </div>
-                        <div class="row g-1">
-                            <div class="col-4">
-                                <div class="row row-cols-4 g-1">
-                                    <div class="col">
-                                        <button class="w-100" type="button">7</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">8</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">9</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">/</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">4</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">5</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">6</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">*</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">1</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">2</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">3</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">-</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">0</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">.</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">=</button>
-                                    </div>
-                                    <div class="col">
-                                        <button class="w-100" type="button">+</button>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-4">
+                            <div class="row row-cols-4 g-1">
+                                <div class="col">
+                                    <button class="w-100 btn-clear position-relative" type="button" value="C" @click="backspace" @dblclick="clearValue">
+                                        <span class="position-absolute bottom-35 end-50">Ｃ</span>
+                                        <span class="deg45"></span>
+                                        <span class="position-absolute top-35 start-50">←</span>
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <button class="w-100 b" type="button" value="/" @click="symbolBtn">÷</button>
+                                </div>
+                                <div class="col">
+                                    <button class="w-100 b" type="button" value="*" @click="symbolBtn">×</button>
+                                </div>
+                                <div class="col">
+                                    <button class="w-100 b" type="button" value="-" @click="symbolBtn">－</button>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row row-cols-3 g-1">
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="7" @click="numBtn">7</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="8" @click="numBtn">8</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="9" @click="numBtn">9</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="4" @click="numBtn">4</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="5" @click="numBtn">5</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="6" @click="numBtn">6</button>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col">
+                                    <button class="w-100 h-100 b" type="button" value="+" @click="symbolBtn">＋</button>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row row-cols-3 g-1">
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="1" @click="numBtn">1</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="2" @click="numBtn">2</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="3" @click="numBtn">3</button>
+                                        </div>
+                                        <div class="col-8">
+                                            <button class="w-100 b" type="button" value="0" @click="numBtn">0</button>
+                                        </div>
+                                        <div class="col">
+                                            <button class="w-100 b" type="button" value="." @click="dotBtn">﹒</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <button class="w-100 h-100 b" type="button" value="=" @click="equalBtn">＝</button>
+                                </div>
                             </div>
-                        
-                            <div class="col-8">
+                        </div>
+                    
+                        <div class="col">
+                            <div class="h-100 border border-dark">
                                 <h2 class="text-center fs-4">歷史紀錄</h2>
                                 <ul>
                                     <li>1 + 1 = 2</li>
@@ -128,20 +158,161 @@
         <script src="https://unpkg.com/vue@next"></script>
         <script>
         Vue.createApp({
-            date(){
+            data(){
                 return {
-                    
+                    show: 0,
+                    value: 0,
+                    symbol: '',
+                    result: 0,
+                    valueArray: [],
                 }
             },
             methods: {
+                // 想嘗試用 keyCode 來完成用鍵盤按鍵操控畫面
                 test(event){
                     // 解構賦值獲取 keyCode, target
                     const { keyCode, target } = event;
+                    // 右邊數字鍵的 keyCode
                     ( keyCode >= 96 && keyCode <= 111 ) ? console.log('numberKeyboard', keyCode) :
-                    ( keyCode >= 48 && keyCode <= 57 ) ? console.log('0~9', keyCode) :
+                    // Enter 的 keyCode
                     ( keyCode === 13 ) ? console.log('enter', keyCode) :
+                    // Delete 的 keyCode
                     ( keyCode === 46 ) ? console.log('delete', keyCode) :
+                    // Backspace 的 keyCode
                     ( keyCode === 8 ) ? console.log('backspace', keyCode) : '';
+                },
+                // 數字按鈕
+                numBtn(e){
+                    // 測試
+                    // console.log('按數字', e.target.value);
+                    // 當運算符號是 '=' 清空
+                    this.symbol === '=' ? this.clearValue() : '';
+                    // 當 value 是 0 時，轉成空字串，避免以數字 0 開頭
+                    if( this.value === 0 ) { 
+                        this.value = '';
+                        this.show = '';
+                    }
+                    // 輸入數字的基礎功能，顯示螢幕上的
+                    this.show += e.target.value;
+                    // 這是給程式計算的
+                    this.value += e.target.value;
+                    // 剛開始輸入數字，右邊的數字跟著同步
+                    if( this.valueArray.length === 0 ) this.result = this.value;
+                },
+                // 倒退按鈕
+                backspace(e){
+                    // 當運算符號是 '=' 清空
+                    this.symbol === '=' ? this.clearValue() : '';
+                    // 為了避免顯示螢幕上的數字出現 bug，讓使用者只能刪除當前 value
+                    if( this.value !== 0 ){
+                        // 刪除最後一個數字
+                        this.show = this.show.slice(0, -1);
+                        this.value = this.value.slice(0, -1);
+                    }
+                },
+                // 清空按鈕，清空 data
+                clearValue(){
+                    this.show = 0;
+                    this.value = 0;
+                    this.symbol = '';
+                    this.result = 0;
+                    this.valueArray = [];
+                },
+                // 運算符號按鈕
+                symbolBtn(e){
+                    // console.log('按鍵', e.target.value);
+                    // 當運算符號是 '=' 清空
+                    this.symbol === '=' ? this.clearValue() : '';
+                    // 切換運算符號
+                    if( this.value === '' ){
+                        this.show = this.show.slice(0, -1);
+                        this.symbol = e.target.value;
+                        this.show += e.target.textContent;
+                        return
+                    }
+                    // 將第一組數字推入數列
+                    this.valueArray.push( this.value );
+                    // 當數列有兩個數字時，先進行運算，後面運算才不會出 bug
+                    if( this.valueArray.length === 2 ) {
+                        switch( this.symbol ){
+                            // 當 symbol 為 '+' 時，從這裡開始，以下 - * / 皆同
+                            case '+':
+                                // 將運算結果傳給 result
+                                this.result = parseFloat(this.valueArray[0], 10) + parseFloat(this.valueArray[1], 10);
+                                // 將 result 傳回到數列 [0]
+                                this.valueArray[0] = this.result.toFixed(2);
+                                // 刪除數列最後一個值，以達到此數列保持 1 個數字
+                                this.valueArray.pop();
+                                break
+                            case '-':
+                                this.result = parseFloat(this.valueArray[0], 10) - parseFloat(this.valueArray[1], 10);
+                                this.valueArray[0] = this.result.toFixed(2);
+                                this.valueArray.pop();
+                                break
+                            case '*':
+                                this.result = parseFloat(this.valueArray[0], 10) * parseFloat(this.valueArray[1], 10);
+                                this.valueArray[0] = this.result.toFixed(2);
+                                this.valueArray.pop();
+                                break
+                            case '/':
+                                this.result = parseFloat(this.valueArray[0], 10) / parseFloat(this.valueArray[1], 10);
+                                this.valueArray[0] = this.result.toFixed(2);
+                                // 當 result 是無限時，顯示 ∞
+                                if( this.result == 'Infinity' ) this.result = '∞';
+                                this.valueArray.pop();
+                                break 
+                        }
+                    }
+                    // 傳運算符號到 symbol
+                    this.symbol = e.target.value;
+                    // 螢幕上添加運算符號
+                    this.show += e.target.textContent;
+                    // 清空 value 值
+                    this.value = '';
+                    console.log(typeof(this.result));
+                },
+                // 等於按鈕
+                equalBtn(e){   
+                    // 如果沒有帶入數字，就會按了沒反應
+                    if( this.value === '' ) return;
+                    // 依照運算符號進行運算，大致上同上
+                    switch( this.symbol ){
+                        case '+':
+                            this.result = parseFloat(this.valueArray[0], 10) + parseFloat(this.value, 10);
+                            this.valueArray[0] = this.result.toFixed(2);
+                            this.valueArray.pop();
+                            this.value = '';
+                            break
+                        case '-':
+                            this.result = parseFloat(this.valueArray[0], 10) - parseFloat(this.value, 10);
+                            this.valueArray[0] = this.result.toFixed(2);
+                            this.valueArray.pop();
+                            break
+                        case '*':
+                            this.result = parseFloat(this.valueArray[0], 10) * parseFloat(this.value, 10);
+                            this.valueArray[0] = this.result.toFixed(2);
+                            this.valueArray.pop();
+                            break
+                        case '/':
+                            this.result = parseFloat(this.valueArray[0], 10) / parseFloat(this.value, 10);
+                            this.valueArray[0] = this.result.toFixed(2);
+                            if( this.result == 'Infinity' ) this.result = '∞';
+                            this.valueArray.pop();
+                            break 
+                    };
+                    // 將運算符號切換成 '='，表示當前計算結束
+                    this.symbol = '='
+                },
+                dotBtn(e){
+                    // 當運算符號是 '=' 清空
+                    this.symbol === '=' ? this.clearValue() : '';
+                    if( this.value.indexOf(".") != -1 ) return
+                    // 顯示螢幕上的
+                    this.show += e.target.value;
+                    // 這是給程式計算的
+                    this.value += e.target.value;
+                    // 剛開始輸入，右邊的結果跟著同步
+                    if( this.valueArray.length === 0 ) this.result = this.value;
                 }
             },
             mounted(){
