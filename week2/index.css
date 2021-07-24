@@ -7,6 +7,20 @@ body {
   background: no-repeat linear-gradient(174deg, #ffd370 0%, #ffd370 56%, #FFF 56%, #FFF 100%);
 }
 
+@media (max-width: 1023px) {
+  html,
+  body {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    font-size: 1rem;
+  }
+}
+
 input {
   color: #a37100;
 }
@@ -79,7 +93,6 @@ input {
 
 .btn-common:hover {
   background: rgba(0, 0, 0, 0.1);
-  font-size: 1.25rem;
 }
 
 .btn-common:active {
@@ -123,6 +136,18 @@ input {
   overflow: hidden;
 }
 
+@media (max-width: 1023px) {
+  .historyFrame {
+    height: 25vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .historyFrame {
+    height: 40vh;
+  }
+}
+
 .historyList {
   padding: 16px;
   list-style: none;
@@ -143,5 +168,11 @@ input {
   line-height: 1.5;
   border-bottom: 1px solid #ffb40a;
   overflow-x: auto;
+}
+
+.helper {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=index.css.map */

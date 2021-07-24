@@ -24,18 +24,18 @@
                 <div ref="computer" class="computer p-2 pb-3">
                     <div class="screen mb-1">
                         <div class="row gx-2 align-items-center">
-                            <div class="col-7">
+                            <div class="col-lg-7">
                                 <input class="screen-num px-2 py-0" type="text" readonly="readonly" placeholder="0" v-model="show">
                             </div>
-                            <div class="col-5">
-                                <h2 class="result m-0">= 
+                            <div class="col-lg-5">
+                                <h2 class="result m-0 ps-1">= 
                                     <input class="screen-num px-2 py-0" type="text" readonly="readonly" placeholder="0" v-model="result">
                                 </h2>
                             </div>
                         </div>
                     </div>
                     <div class="row g-2">
-                        <div class="col-4">
+                        <div class="col-lg-4">
                             <div class="row row-cols-4 g-1">
                                 <div class="col">
                                     <button class="h-100 w-100 btn btn-clear position-relative" type="button" value="c" data-key="Backspace" @click="backspace" @dblclick="clearValue">
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                     
-                        <div class="col-8">
+                        <div class="col-lg-8">
                             <div class="screen h-100">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <h2 class="flex-fill text-center fs-4 m-0">歷史紀錄</h2>
@@ -120,6 +120,7 @@
                         </div>
                     </div>
                 </div>
+                <p class="helper">※ 可以使用鍵盤操作，雙擊 C 能清空樣式，單擊 C 則能退後一格，Delete 鍵能清空歷史紀錄</p>
             </div>
         </div>
         <script src="https://unpkg.com/vue@next"></script>
@@ -167,8 +168,17 @@
                 backspace(e){
                     // 當運算符號是 '=' 清空
                     this.symbol === '=' ? this.clearValue() : '';
+                    // 一開始螢幕 '=' 兩邊數字同步
+                    if( this.result === this.show && this.result ){
+                        // 刪除最後一個數字
+                        this.show = this.show.slice(0, -1);
+                        this.value = this.value.slice(0, -1);
+                        // 剛開始輸入數字，右邊的數字跟著同步
+                        this.result = this.show;
+                        return
+                    }
                     // 為了避免顯示螢幕上的數字出現 bug，讓使用者只能刪除當前 value
-                    if( this.value !== 0 ){
+                    if( this.value != '' ){
                         // 刪除最後一個數字
                         this.show = this.show.slice(0, -1);
                         this.value = this.value.slice(0, -1);
@@ -334,45 +344,34 @@
                     "max-glare": .5,
                 });
                 this.getHistory();
-                console.log()
+                // 按鍵觸發，以下略同，keydown 按下按鍵時， keyup 放開按鍵時
                 window.addEventListener('keydown', function(e){
+                    // 鎖定按的按鍵
                     const btn = document.querySelector(`button[value="${e.key}"]`);
+                    // 將沒有宣告的按鍵 return ，避免報錯
                     if(!btn) return
+                    // 將按鍵套 class 達到使用者體感優化
                     btn.classList.add('active');
-                    switch( e.key ){
-                        case '0':
-                        case '1':
-                        case '2':
-                        case '3':
-                        case '4':
-                        case '5':
-                        case '6':
-                        case '7':
-                        case '8':
-                        case '9':
-                            console.log('a', e.key);
-                            this.numBtn( e.key );
-                            break;
-                    }
-                    console.log(e.key);
+                    // 觸發按鍵 click 事件
+                    btn.click();
+                    // 測試
+                    // console.log(e.key);
                 });
                 window.addEventListener('keydown', function(e){
                     const ex_btn = document.querySelector(`button[data-key="${e.key}"]`);
                     if(!ex_btn) return
                     ex_btn.classList.add('active');
-                    console.log(e.key);
+                    ex_btn.click();
                 });
                 window.addEventListener('keyup', function(e){
                     const btn = document.querySelector(`button[value="${e.key}"]`);
                     if(!btn) return
                     btn.classList.remove('active');
-                    console.log(e.key);
                 });
                 window.addEventListener('keyup', function(e){
                     const ex_btn = document.querySelector(`button[data-key="${e.key}"]`);
                     if(!ex_btn) return
                     ex_btn.classList.remove('active');
-                    console.log(e.key);
                 });
             },
         }).mount('#app');
