@@ -61,6 +61,11 @@ input {
   background: rgba(255, 55, 55, 0.4);
 }
 
+.btn-clear:focus {
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
 .btn-common {
   background: rgba(255, 255, 255, 0.5);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
@@ -79,6 +84,11 @@ input {
 
 .btn-common:active {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.btn-common:focus {
+  -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 .deg45 {
@@ -114,6 +124,7 @@ input {
 }
 
 .historyList {
+  padding: 16px;
   list-style: none;
   white-space: nowrap;
   font-size: .875rem;

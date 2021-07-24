@@ -51,6 +51,10 @@ input {
     &:active {
         background: rgba( 255, 55, 55, .4);
     }
+    
+    &:focus {
+        box-shadow: 1px 1px 1px rgba( 0, 0, 0, .7 );
+    }
 }
 .btn-common {
     background: rgba( 255, 255, 255, .5 );
@@ -67,6 +71,10 @@ input {
 
     &:active {
         background: rgba( 0, 0, 0, .3);
+    }
+
+    &:focus {
+        box-shadow: 1px 1px 1px rgba( 0, 0, 0, .7 );
     }
 }
 .deg45 {
@@ -92,6 +100,7 @@ input {
     overflow: hidden;
 }
 .historyList {
+    padding: 16px;
     list-style: none;
     white-space: nowrap;
     font-size: .875rem;
