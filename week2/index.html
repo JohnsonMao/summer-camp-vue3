@@ -24,11 +24,13 @@
                 <div ref="computer" class="computer p-2 pb-3">
                     <div class="screen mb-1">
                         <div class="row gx-2 align-items-center">
-                            <div class="col-8">
+                            <div class="col-7">
                                 <input class="screen-num px-2 py-0" type="text" readonly="readonly" placeholder="0" v-model="show">
                             </div>
-                            <div class="col">
-                                <h2 class="fs-4 m-0">= {{ result }}</h2>
+                            <div class="col-5">
+                                <h2 class="result m-0">= 
+                                    <input class="screen-num px-2 py-0" type="text" readonly="readonly" placeholder="0" v-model="result">
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -36,77 +38,84 @@
                         <div class="col-4">
                             <div class="row row-cols-4 g-1">
                                 <div class="col">
-                                    <button class="btn btn-clear position-relative" type="button" value="C" @click="backspace" @dblclick="clearValue">
+                                    <button class="h-100 w-100 btn btn-clear position-relative" type="button" value="C" @click="backspace" @dblclick="clearValue">
                                         <span class="position-absolute bottom-35 end-50">Ｃ</span>
                                         <span class="deg45"></span>
                                         <span class="position-absolute top-35 start-50">←</span>
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-common" type="button" value="/" @click="symbolBtn">÷</button>
+                                    <button class="h-100 w-100 btn btn-common" type="button" value="/" @click="symbolBtn">÷</button>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-common" type="button" value="*" @click="symbolBtn">×</button>
+                                    <button class="h-100 w-100 btn btn-common" type="button" value="*" @click="symbolBtn">×</button>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-common" type="button" value="-" @click="symbolBtn">－</button>
+                                    <button class="h-100 w-100 btn btn-common" type="button" value="-" @click="symbolBtn">－</button>
                                 </div>
                                 <div class="col-9">
                                     <div class="row row-cols-3 g-1">
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="7" @click="numBtn">7</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="7" @click="numBtn">7</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="8" @click="numBtn">8</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="8" @click="numBtn">8</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="9" @click="numBtn">9</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="9" @click="numBtn">9</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="4" @click="numBtn">4</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="4" @click="numBtn">4</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="5" @click="numBtn">5</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="5" @click="numBtn">5</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="6" @click="numBtn">6</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="6" @click="numBtn">6</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-common mt-fix" type="button" value="+" @click="symbolBtn">＋</button>
+                                    <button class="h-100 w-100 btn btn-common mt-fix" type="button" value="+" @click="symbolBtn">＋</button>
                                 </div>
                                 <div class="col-9">
                                     <div class="row row-cols-3 g-1">
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="1" @click="numBtn">1</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="1" @click="numBtn">1</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="2" @click="numBtn">2</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="2" @click="numBtn">2</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="3" @click="numBtn">3</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="3" @click="numBtn">3</button>
                                         </div>
                                         <div class="col-8">
-                                            <button class="btn btn-common" type="button" value="0" @click="numBtn">0</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="0" @click="numBtn">0</button>
                                         </div>
                                         <div class="col">
-                                            <button class="btn btn-common" type="button" value="." @click="dotBtn">﹒</button>
+                                            <button class="h-100 w-100 btn btn-common" type="button" value="." @click="dotBtn">﹒</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-common mt-fix" type="button" value="=" @click="equalBtn">＝</button>
+                                    <button class="h-100 w-100 btn btn-common mt-fix" type="button" value="=" @click="equalBtn">＝</button>
                                 </div>
                             </div>
                         </div>
                     
-                        <div class="col">
+                        <div class="col-8">
                             <div class="screen h-100">
-                                <h2 class="text-center fs-4">歷史紀錄</h2>
-                                <ul>
-                                    <li ></li>
-                                </ul>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h2 class="flex-fill text-center fs-4 m-0">歷史紀錄</h2>
+                                    <button class="btn btn-clear my-1 mx-2 p-1" @click="clearHistory">刪除歷史紀錄</button>
+                                </div>
+                                <div class="historyFrame">
+                                    <ul class="historyList">
+                                        <li class="historyItem" v-for="( item, key ) in history" :key="key">
+                                            <p v-text="item"></p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +123,7 @@
             </div>
         </div>
         <script src="https://unpkg.com/vue@next"></script>
-        <!-- 動畫 -->
+        <!-- 游標互動動畫 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
         <script>
         Vue.createApp({
@@ -145,13 +154,20 @@
                 // 數字按鈕
                 numBtn(e){
                     // 測試
-                    // console.log('按數字', e.target.value);
+                    console.log('按數字', e.target.value);
                     // 當運算符號是 '=' 清空
                     this.symbol === '=' ? this.clearValue() : '';
-                    // 當 value 是 0 時，轉成空字串，避免以數字 0 開頭
-                    if( this.value === 0 ) { 
+                    // 初始化，當 value 是 0 時，轉成空字串，避免以數字 0 開頭
+                    if( this.value == 0 && this.show == 0 ) { 
                         this.value = '';
                         this.show = '';
+                    }
+                    // 在運算中，第二個數以後，當 value 是 0 時，轉成空字串，避免以數字 0 開頭
+                    if( e.target.value == 0 && this.value === '0' ) return
+                    else if( e.target.value && this.value === '0' ) {
+                        this.value = '';
+                        this.show = this.show.slice(0, -1);
+                        this.show += this.value;
                     }
                     // 輸入數字的基礎功能，顯示螢幕上的
                     this.show += e.target.value;
@@ -160,7 +176,7 @@
                     // 剛開始輸入數字，右邊的數字跟著同步
                     if( this.valueArray.length === 0 ) this.result = this.value;
                 },
-                // 倒退按鈕
+                // 倒退按鈕，倒退最後一個數字
                 backspace(e){
                     // 當運算符號是 '=' 清空
                     this.symbol === '=' ? this.clearValue() : '';
@@ -268,18 +284,20 @@
                         default:
                             break
                     };
-                    const newHistory = this.show + ' = ' + this.result
-                    // 存入 localStorage
-                    localStorage.setItem( new Date(), newHistory )
-
-                    this.history.push( localStorage.getItem( new Date() ) )
                     // 將運算符號切換成 '='，表示當前計算結束
-                    this.symbol = '='
-                    console.log(this.history);
+                    this.symbol = '=';
+                    // 添加
+                    this.newHistory();
                 },
+                // 小數點按鈕
                 dotBtn(e){
                     // 當運算符號是 '=' 清空
                     this.symbol === '=' ? this.clearValue() : '';
+                    // 如果當前沒數字，自動帶入 0
+                    if( this.value === '' ){
+                        this.value = '0';
+                        this.show += this.value;
+                    }
                     if( this.value.indexOf(".") != -1 ) return
                     // 顯示螢幕上的
                     this.show += e.target.value;
@@ -288,18 +306,47 @@
                     // 剛開始輸入，右邊的結果跟著同步
                     if( this.valueArray.length === 0 ) this.result = this.value;
                 },
-                // initHistory(){
-                //     this.history.push
-                // }
+                // 新紀錄
+                newHistory(){
+                    // 將結果存入字串
+                    const strHistory = this.show + ' = ' + this.result
+                    // 如果歷史紀錄超過十個，將刪除第一個
+                    if (this.history.length > 9) {
+                        this.history.shift();
+                    }
+                    // 使用傳送歷史紀錄方法
+                    this.pushHistory( strHistory );
+                },
+                // 接收歷史紀錄
+                getHistory() {
+                    if ( localStorage.getItem('historyList') ) {
+                        this.history = JSON.parse( localStorage.getItem( 'historyList' ) );
+                    };
+                },
+                // 傳送歷史紀錄
+                pushHistory( strHistory ) {
+                    // 將新紀錄加入歷史紀錄中
+                    this.history.push( strHistory );
+                    // 將資料轉成字串型式
+                    const localHistory = JSON.stringify( this.history );
+                    // 存入 localStorage
+                    localStorage.setItem( 'historyList', localHistory );
+                },
+                // 清除歷史紀錄
+                clearHistory() {
+                    this.history = [];
+                    localStorage.removeItem( 'historyList' );
+                }
             },
             mounted(){
                 // 游標互動動畫
                 VanillaTilt.init(this.$refs.computer,{
-                    max: 5,
+                    max: 1,
                     speed: 400,
                     glare: true,
                     "max-glare": .5,
                 });
+                this.getHistory();
             },
         }).mount('#app');
         </script>

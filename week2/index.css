@@ -3,8 +3,12 @@ body {
   height: 100%;
   line-height: 2;
   font-size: 1.5rem;
-  color: #333;
+  color: #a37100;
   background: no-repeat linear-gradient(174deg, #ffd370 0%, #ffd370 56%, #FFF 56%, #FFF 100%);
+}
+
+input {
+  color: #a37100;
 }
 
 .mt-fix {
@@ -45,14 +49,11 @@ body {
   -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
           box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
   color: #fff;
-  width: 100%;
-  height: 100%;
   font-size: 1rem;
 }
 
 .btn-clear:hover {
   background: rgba(255, 55, 55, 0.3);
-  font-size: 1.25rem;
   color: #fff;
 }
 
@@ -66,9 +67,7 @@ body {
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   -webkit-box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
           box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
-  color: #333;
-  width: 100%;
-  height: 100%;
+  color: #a37100;
   -webkit-transition: all .2s;
   transition: all .2s;
 }
@@ -97,5 +96,41 @@ body {
 
 .bottom-35 {
   bottom: 35%;
+}
+
+.result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.historyFrame {
+  width: 100%;
+  height: 45vh;
+  overflow: hidden;
+}
+
+.historyList {
+  list-style: none;
+  white-space: nowrap;
+  font-size: .875rem;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.historyItem {
+  width: 100%;
+  overflow: hidden;
+}
+
+.historyItem p {
+  line-height: 1.5;
+  border-bottom: 1px solid #ffb40a;
+  overflow-x: auto;
 }
 /*# sourceMappingURL=index.css.map */
