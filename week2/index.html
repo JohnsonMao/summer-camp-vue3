@@ -336,6 +336,8 @@
                 }
             },
             mounted(){
+                // 宣告 vm
+                const vm = this;
                 // 游標互動動畫
                 VanillaTilt.init(this.$refs.computer,{
                     max: 1,
@@ -344,10 +346,15 @@
                     "max-glare": .5,
                 });
                 this.getHistory();
+
                 // 按鍵觸發，以下略同，keydown 按下按鍵時， keyup 放開按鍵時
                 window.addEventListener('keydown', function(e){
                     // 鎖定按的按鍵
                     const btn = document.querySelector(`button[value="${e.key}"]`);
+                    // 如果是案 c 執行 clearValue()
+                    if( e.key === 'c'){
+                        vm.clearValue();
+                    }
                     // 將沒有宣告的按鍵 return ，避免報錯
                     if(!btn) return
                     // 將按鍵套 class 達到使用者體感優化
@@ -356,6 +363,7 @@
                     btn.click();
                     // 測試
                     // console.log(e.key);
+                    console.log(this)
                 });
                 window.addEventListener('keydown', function(e){
                     const ex_btn = document.querySelector(`button[data-key="${e.key}"]`);

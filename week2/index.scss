@@ -106,10 +106,10 @@ input {
     overflow: hidden;
 
     @media( max-width: 1023px ){
-        height: 25vh;
+        height: 15vh;
     }
     @media( max-width: 767px ){
-        height: 40vh;
+        height: 25vh;
     }
 }
 .historyList {
@@ -136,4 +136,5 @@ input {
     margin-top: 16px;
     font-size: 16px;
     font-weight: bold;
+    text-indent: -1.25rem;
 }

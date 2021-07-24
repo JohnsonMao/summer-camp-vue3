@@ -138,13 +138,13 @@ input {
 
 @media (max-width: 1023px) {
   .historyFrame {
-    height: 25vh;
+    height: 15vh;
   }
 }
 
 @media (max-width: 767px) {
   .historyFrame {
-    height: 40vh;
+    height: 25vh;
   }
 }
 
@@ -174,5 +174,6 @@ input {
   margin-top: 16px;
   font-size: 16px;
   font-weight: bold;
+  text-indent: -1.25rem;
 }
 /*# sourceMappingURL=index.css.map */
