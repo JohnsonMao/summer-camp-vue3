@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <div id="app" class="h-100 d-flex align-items-center" @keyDown="test">
+        <div id="app" class="h-100 d-flex align-items-center" v-on:keypress="test">
             <div class="container">
                 <div ref="computer" class="computer p-2 pb-3">
                     <div class="screen mb-1">
@@ -38,7 +38,7 @@
                         <div class="col-4">
                             <div class="row row-cols-4 g-1">
                                 <div class="col">
-                                    <button class="h-100 w-100 btn btn-clear position-relative" type="button" value="C" @click="backspace" @dblclick="clearValue">
+                                    <button class="h-100 w-100 btn btn-clear position-relative" type="button" value="c" data-key="Backspace" @click="backspace" @dblclick="clearValue">
                                         <span class="position-absolute bottom-35 end-50">Ｃ</span>
                                         <span class="deg45"></span>
                                         <span class="position-absolute top-35 start-50">←</span>
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <button class="h-100 w-100 btn btn-common mt-fix" type="button" value="=" @click="equalBtn">＝</button>
+                                    <button class="h-100 w-100 btn btn-common mt-fix" type="button" value="=" data-key="Enter" @click="equalBtn">＝</button>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                             <div class="screen h-100">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <h2 class="flex-fill text-center fs-4 m-0">歷史紀錄</h2>
-                                    <button class="btn btn-clear my-1 mx-2 p-1" @click="clearHistory">刪除歷史紀錄</button>
+                                    <button class="btn btn-clear my-1 mx-2 p-1" value="Delete" @click="clearHistory">刪除歷史紀錄</button>
                                 </div>
                                 <div class="historyFrame">
                                     <ul class="historyList">
@@ -138,23 +138,10 @@
                 }
             },
             methods: {
-                // 想嘗試用 keyCode 來完成用鍵盤按鍵操控畫面
-                test(event){
-                    // 解構賦值獲取 keyCode, target
-                    const { keyCode, target } = event;
-                    // 右邊數字鍵的 keyCode
-                    ( keyCode >= 96 && keyCode <= 111 ) ? console.log('numberKeyboard', keyCode) :
-                    // Enter 的 keyCode
-                    ( keyCode === 13 ) ? console.log('enter', keyCode) :
-                    // Delete 的 keyCode
-                    ( keyCode === 46 ) ? console.log('delete', keyCode) :
-                    // Backspace 的 keyCode
-                    ( keyCode === 8 ) ? console.log('backspace', keyCode) : '';
-                },
                 // 數字按鈕
                 numBtn(e){
                     // 測試
-                    console.log('按數字', e.target.value);
+                    // console.log('按數字', e.target.value);
                     // 當運算符號是 '=' 清空
                     this.symbol === '=' ? this.clearValue() : '';
                     // 初始化，當 value 是 0 時，轉成空字串，避免以數字 0 開頭
@@ -347,6 +334,46 @@
                     "max-glare": .5,
                 });
                 this.getHistory();
+                console.log()
+                window.addEventListener('keydown', function(e){
+                    const btn = document.querySelector(`button[value="${e.key}"]`);
+                    if(!btn) return
+                    btn.classList.add('active');
+                    switch( e.key ){
+                        case '0':
+                        case '1':
+                        case '2':
+                        case '3':
+                        case '4':
+                        case '5':
+                        case '6':
+                        case '7':
+                        case '8':
+                        case '9':
+                            console.log('a', e.key);
+                            this.numBtn( e.key );
+                            break;
+                    }
+                    console.log(e.key);
+                });
+                window.addEventListener('keydown', function(e){
+                    const ex_btn = document.querySelector(`button[data-key="${e.key}"]`);
+                    if(!ex_btn) return
+                    ex_btn.classList.add('active');
+                    console.log(e.key);
+                });
+                window.addEventListener('keyup', function(e){
+                    const btn = document.querySelector(`button[value="${e.key}"]`);
+                    if(!btn) return
+                    btn.classList.remove('active');
+                    console.log(e.key);
+                });
+                window.addEventListener('keyup', function(e){
+                    const ex_btn = document.querySelector(`button[data-key="${e.key}"]`);
+                    if(!ex_btn) return
+                    ex_btn.classList.remove('active');
+                    console.log(e.key);
+                });
             },
         }).mount('#app');
         </script>

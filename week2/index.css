@@ -61,7 +61,7 @@ input {
   background: rgba(255, 55, 55, 0.4);
 }
 
-.btn-clear:focus {
+.btn-clear:focus, .btn-clear.active {
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
@@ -86,7 +86,7 @@ input {
   background: rgba(0, 0, 0, 0.3);
 }
 
-.btn-common:focus {
+.btn-common:focus, .btn-common.active {
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
