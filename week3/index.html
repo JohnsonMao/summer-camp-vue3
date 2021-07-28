@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="App.css">
+</head>
+
+<body>
+<div id="app">
+    <div class="container">
+        <h1 class="h1 py-4">TODOLIST</h1>
+
+        <div class="input-group bg-white box-shadow rounded-1 overflow-hidden mb-3">
+            <input type="text" 
+                class="form-control flex-fill" 
+                @keyup.enter="addTodo"
+                v-model="newTodo"
+                placeholder="新增代辦事項"/>
+            <button type="button" 
+                class="btn btn-size-lg btn-dark rounded-1 m-1"
+                @click="addTodo">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="bg-white box-shadow rounded-1 overflow-hidden">
+
+            <ul class="btn-group">
+                <li class='col' :class=" filterType === 'all' ? 'active' : '' ">
+                    <button class="btn" 
+                    @click.prevent="filterType = 'all'">全部</button>
+                </li>
+                <li class='col' :class=" filterType === 'undone' ? 'active' : '' ">
+                    <button class="btn" 
+                    @click.prevent="filterType = 'undone'">待完成</button>
+                </li>
+                <li class='col' :class=" filterType === 'done' ? 'active' : '' ">
+                    <button class="btn" 
+                    @click.prevent="filterType = 'done'">已完成</button>
+                </li>
+            </ul>
+
+            <div class="list-frame vh-55">
+                <ul class="list-group">
+                    <div>
+                        <li v-for="item in filterTodos"
+                            :key="item.id"
+                            class="input-group">
+                            <input v-if="cacheId === item.id"
+                                @keyup.enter="doneEdit( item )"
+                                @keyup.esc="cancelEdit"
+                                v-model="cacheName" 
+                                class="form-edit flex-fill" 
+                                type="text" />
+                            <div v-else class="input-group">
+                                <input type="checkbox" 
+                                    :id="item.id"
+                                    @click="toggleDone( item.id, item.done )"
+                                    :checked=" item.done "
+                                    class="form-check m-4"/>
+                                <label :for="item.id"
+                                    v-text="item.name"
+                                    @dblclick="editTodo( item.id, item.name )"
+                                    :class="item.done ? 'del' : ''"
+                                    class="flex-fill lh-1 py-4 ms-1">
+                                </label>
+                            </div>
+                            <button type="button" 
+                                @click="deleteTodo( item.id )"
+                                class="btn btn-size-base list-btn-warning m-3"
+                                aria-label="Close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex align-items-center">
+                    <input type="checkbox"
+                        @click="toggleAllTodo"
+                        :checked="checkAllTodo = 
+                        ( doneCount === total && total !== 0 ) ? true : false" 
+                        class="form-check m-4"/>
+                    <h3 class="text-dark-gray">
+                        已完成 <span v-text="doneCount = todos.reduce(( pre, cur ) =>
+                            pre + ( cur.done ? 1 : 0), 0)"></span> / 
+                        全部 <span v-text="total = todos.length"></span>
+                    </h3>
+                </div>
+                <button type="button"
+                    @click="clearAllDone"
+                    class="btn btn-text-warning m-4 me-8">清除已完成項目</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    Vue.createApp({
+    data() {
+        return {
+            newTodo: '',
+            todos: [],
+            doneCount: 0,
+            total: 0,
+            cacheName: '',
+            cacheId: '',
+            filterType: 'all',
+            checkAllTodo: false,
+        }
+    },
+    computed: {
+        filterTodos() {
+            switch ( this.filterType ) {
+                case 'undone':
+                return this.todos.filter( item => !item.done);
+                case 'done':
+                return this.todos.filter( item => item.done);
+                default:
+                return this.todos;
+            }
+        }
+    },
+    methods: {
+        // 新增 todo
+        addTodo() {
+            // 添加的 todo 名字不能空白
+            if( !this.newTodo.trim() ){
+                alert('請輸入代辦事項');
+                return
+            }
+            // 準備好一個 todo 物件
+            const item = { id: Date.now(), name: this.newTodo, done: false };
+            // 把 item 新增到 todos
+            this.todos = [item,...this.todos];
+            // 輸入完清空
+            this.newTodo = '';
+            // 刷新歷史紀錄
+            this.pushHistory()
+        },
+        // 刪除 todo
+        deleteTodo( id ) {
+            // 刪除前確認一下
+            if( window.confirm('確定刪除嗎？') ){
+                // 找到當前按鈕那列的 index
+                const index = this.todos.findIndex( item => item.id === id);
+                // 刪除
+                this.todos.splice(index, 1);
+            }
+            // 刷新歷史紀錄
+            this.pushHistory()
+        },
+        // 切換 todo
+        toggleDone( id, done ) {
+            // 找到當前按鈕那列的 index
+            const index = this.todos.findIndex( item => item.id === id);
+            this.todos[ index ].done = !done
+            // 刷新歷史紀錄
+            this.pushHistory()
+        },
+        // 編輯 todo
+        editTodo( id, name ) {
+            // 取得 name 與 id
+            this.cacheName = name;
+            this.cacheId = id;
+        },
+        // 編輯完成
+        doneEdit( item ) {
+            // 編輯的 todo 不能空白
+            if ( !this.cacheName.trim() ) {
+                alert('編輯的事項不能空白');
+                return;
+            }
+            // 取得當前編輯的 index
+            const index = this.todos.findIndex( item => item.id === this.cacheId);
+            // 將編輯好的的資料回傳到列表中
+            this.todos[ index ].name = this.cacheName;
+            // 清空抓取的資料
+            this.cacheName = '';
+            this.cacheId = '';
+            // 刷新歷史紀錄
+            this.pushHistory()
+        },
+        // 取消編輯
+        cancelEdit() {
+            // 清空抓取的資料
+            this.cacheName = '';
+            this.cacheId = '';
+        },
+        // 全選
+        toggleAllTodo() {
+            // 調整全體
+            this.checkAllTodo = !this.checkAllTodo
+            this.todos = this.todos.map( item => {
+                return {...item, done : this.checkAllTodo }
+            })
+            // 刷新歷史紀錄
+            this.pushHistory()
+        },
+        // 清除已完成的 todo
+        clearAllDone() {
+            if ( window.confirm( '你確定要刪除已完成的任務?' ) ) {
+                this.todos = this.todos.filter( item => !item.done )
+                this.filterType = 'all'
+            }
+            // 刷新歷史紀錄
+            this.pushHistory()
+        },
+        // 接收歷史紀錄
+        getHistory() {
+            if ( localStorage.getItem('todo_list_history') ) {
+                this.todos = JSON.parse( localStorage.getItem( 'todo_list_history' ) );
+            };
+        },
+        // 傳送歷史紀錄
+        pushHistory() {
+            // 將資料轉成字串型式
+            const localHistory = JSON.stringify( this.todos );
+            // 存入 localStorage
+            localStorage.setItem( 'todo_list_history', localHistory );
+        },
+    },
+    mounted() {
+        this.getHistory();
+    },
+    }).mount('#app');
+</script>
+</body>
+
+</html>
