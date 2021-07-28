@@ -21,6 +21,13 @@ body {
     line-height: 1.5;
     background: no-repeat linear-gradient(174deg, $primary 0%, $primary 56%, #FFF 56%, #FFF 100%);
 }
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+}
 .del {
     color: lighten($dark-gray, 20);
     text-decoration: line-through;
@@ -28,6 +35,13 @@ body {
 }
 .lh-1 {
     line-height: 1;
+}
+.text-primary {
+    color: darken( $primary, 25);
+
+    a {
+        color: darken( $primary, 35);
+    }
 }
 
 // grid
@@ -237,8 +251,8 @@ body {
 }
 
 // other
-.vh-55 {
-    height: 55vh;
+.vh-50 {
+    height: 50vh;
 }
 .text-dark-gray {
     color: $dark-gray;
@@ -248,6 +262,9 @@ body {
 }
 .justify-content-between {
     justify-content: space-between;
+}
+.justify-content-center {
+    justify-content: center;
 }
 .align-items-center {
     align-items: center;

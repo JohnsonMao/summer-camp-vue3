@@ -7,12 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="App.css">
+    
+    <!-- ico -->
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
 <div id="app">
     <div class="container">
-        <h1 class="h1 py-4">TODOLIST</h1>
+        <h1 class="h1 d-flex align-items-center justify-content-center py-4">
+            <img class="px-3" src="../tent.png" alt="Summer camp Vue 3"> TODOLIST
+        </h1>
 
         <div class="input-group bg-white box-shadow rounded-1 overflow-hidden mb-3">
             <input type="text" 
@@ -44,7 +50,7 @@
                 </li>
             </ul>
 
-            <div class="list-frame vh-55">
+            <div class="list-frame vh-50">
                 <ul class="list-group">
                     <div>
                         <li v-for="item in filterTodos"
@@ -99,6 +105,15 @@
             </div>
 
         </div>
+        <footer>
+            <div class="text-primary">UI design from 
+                <a href="https://www.hexschool.com/" title="Freepik">Hexschool</a>
+            </div>
+            <div class="text-primary">Icons made by 
+                <a href="https://www.freepik.com" title="Freepik">Freepik</a> from 
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+            </div>
+        </footer>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
