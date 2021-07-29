@@ -10,66 +10,133 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 
-    <!-- bootstrap 5 CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <!-- css -->
+    <link rel="stylesheet" href="./scss/all.css">
 
 </head>
-<body>
-    <header class="navbar">
-        <div class="container justify-content-center">
-            <h1 class="me-3">
-                <a href="#">
-                    <img src="./summer-camp.png" alt="summer camp">
+<body>  
+    <h1 class="d-flex justify-content-center align-items-center">
+        <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/"
+        class="d-flex align-items-end fs-1">
+            <img src="./tent.png" class="me-3" alt="summer camp">
+            六角學院 Vue 3 新手夏令營
+        </a>
+    </h1>
+    <div class="container">
+        <ul class="">
+            <li class="position-absolute top_right">
+                <a href="https://johnsonmao.github.io/summer-camp-vue3/week1">
+                    <div class="tent">
+                        <div class="content">
+                            <h2 class="">第一堂<br>Vue 3 起步走</h2>
+                            <h3>選賞單</h3>
+                        </div>
+                        <div class="firefly"></div>
+                    </div>
                 </a>
-            </h1>
-            
-            <h2 class="fw-bold text-info">六角學院 Vue 3 新手夏令營</h2>
-        </div>
-    </header>
-    <div class="container d-flex justify-content-center">
-
-        <ul class="nav w-50 flex-column align-items-center">
-            <li class="w-100 d-flex flex-column align-items-center pb-5">
-                <h3 class="text-success pb-2">第一堂：Vue 3 起步走</h3>
-                <div class="btn-group w-50">
-                    <a
-                    class="btn btn-outline-success" 
+                <div class="">
+                    <!-- <a
+                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week1">
-                    Github</a>
-                    <a
-                    class="btn btn-outline-success" 
-                    href="https://johnsonmao.github.io/summer-camp-vue3/week1">
-                    Demo</a>
+                    Github</a> -->
                 </div>
             </li>
-            <li class="w-100 d-flex flex-column align-items-center pb-5">
-                <h3 class="text-success pb-2">第二堂：Vue 與指令</h3>
-                <div class="btn-group w-50">
-                    <a
-                    class="btn btn-outline-success" 
+            <li class="position-absolute right">
+                <a href="https://johnsonmao.github.io/summer-camp-vue3/week2">
+                    <div class="tent">
+                        <div class="content">
+                            <h2 class="">第二堂<br>Vue 3 與指令</h2>
+                            <h3>計算機</h3>
+                        </div>
+                    </div>
+                </a>
+                <div class="">
+                    <!-- <a
+                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week2">
-                    Github</a>
-                    <a
-                    class="btn btn-outline-success" 
-                    href="https://johnsonmao.github.io/summer-camp-vue3/week2">
-                    Demo</a>
+                    Github</a> -->
                 </div>
             </li>
-            <li class="w-100 d-flex flex-column align-items-center pb-5">
-                <h3 class="text-success pb-2">第三堂：Vue 3 Options API</h3>
-                <div class="btn-group w-50">
-                    <a
-                    class="btn btn-outline-success" 
+            <li class="position-absolute bottom_right">
+                <a href="https://johnsonmao.github.io/summer-camp-vue3/week3">
+                    <div class="tent">
+                        <div class="content">
+                            <h2 class="">第三堂<br>Vue 3 Options API</h2>
+                            <h3>Todos 工具</h3>
+                        </div>
+                    </div>
+                </a>
+                <div class="">
+                    <!-- <a
+                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week3">
-                    Github</a>
-                    <a
-                    class="btn btn-outline-success" 
-                    href="https://johnsonmao.github.io/summer-camp-vue3/week3">
-                    Demo</a>
+                    Github</a> -->
+                </div>
+            </li>
+            <li class="position-absolute bottom_left">
+                <a href="https://johnsonmao.github.io/summer-camp-vue3/week4">
+                <div class="tent">
+                        <div class="content">
+                            <h2 class="">第四堂<br>Vue 3 Composition API</h2>
+                            <h3>Demo</h3>
+                        </div>
+                    </div>
+                </a>
+                <div class="">
+                    <!-- <a
+                    class="" 
+                    href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week4">
+                    Github</a> -->
+                </div>
+            </li>
+            <li class="position-absolute top_left">
+                <a href="https://johnsonmao.github.io/summer-camp-vue3/week5">
+                    <div class="tent">
+                        <div class="content">
+                            <h2 class="">第五堂<br>Vue 3 & Firebase</h2>
+                            <h3>即時聊天室</h3>
+                        </div>
+                    </div>
+                </a>
+                <div class="">
+                    <!-- <a
+                    class="" 
+                    href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week5">
+                    Github</a> -->
                 </div>
             </li>
         </ul>
+
+        <div class="campfire">
+            <div class="flame-wrapper">
+                <div class="flame red"></div>
+                <div class="flame orange"></div>
+                <div class="flame gold"></div>
+                <div class="flame white"></div>
+            </div>
+            <div class="woods">
+                <div class="wood_1">
+                    <div class="wood wood_body"></div>
+                    <div class="wood wood_section"></div>
+                </div>
+                <div class="wood_2">
+                    <div class="wood wood_body"></div>
+                    <div class="wood wood_section"></div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <footer class="d-flex justify-content-center align-items-center flex-column pt-3">
+        <!-- UI 設計來自於 六角學院 -->
+        <div class="text-primary">Course from 
+            <a href="https://www.hexschool.com/" title="Freepik">Hexschool</a>
+        </div>
+        <!-- Icon 來自於 Freepik -->
+        <div class="text-primary">Icons made by 
+            <a href="https://www.freepik.com" title="Freepik">Freepik</a> from 
+            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
+    </footer>
 </body>
 </html>

@@ -16,11 +16,15 @@
 <body>
 <div id="app">
     <div class="container">
+
+        <!-- todolist title -->
         <h1 class="h1 d-flex align-items-center justify-content-center py-4">
             <img class="px-3" src="../tent.png" alt="Summer camp Vue 3"> TODOLIST
         </h1>
 
+        <!-- todolist header -->
         <div class="input-group bg-white box-shadow rounded-1 overflow-hidden mb-3">
+            <!-- add todo -->
             <input type="text" 
                 class="form-control flex-fill" 
                 @keyup.enter="addTodo"
@@ -35,7 +39,9 @@
 
         <div class="bg-white box-shadow rounded-1 overflow-hidden">
 
+            <!-- todolist nav -->
             <ul class="btn-group">
+                <!-- filter todo -->
                 <li class='col' :class=" filterType === 'all' ? 'active' : '' ">
                     <button class="btn" 
                     @click.prevent="filterType = 'all'">全部</button>
@@ -50,18 +56,22 @@
                 </li>
             </ul>
 
+            <!-- todolist list -->
             <div class="list-frame vh-50">
                 <ul class="list-group">
                     <div>
+                        <!-- todolist item -->
                         <li v-for="item in filterTodos"
                             :key="item.id"
                             class="input-group">
+                            <!-- edit todo -->
                             <input v-if="cacheId === item.id"
                                 @keyup.enter="doneEdit( item )"
                                 @keyup.esc="cancelEdit"
                                 v-model="cacheName" 
                                 class="form-edit flex-fill" 
                                 type="text" />
+                            <!-- toggle todo -->
                             <div v-else class="input-group">
                                 <input type="checkbox" 
                                     :id="item.id"
@@ -75,6 +85,7 @@
                                     class="flex-fill lh-1 py-4 ms-1">
                                 </label>
                             </div>
+                            <!-- delete todo -->
                             <button type="button" 
                                 @click="deleteTodo( item.id )"
                                 class="btn btn-size-base list-btn-warning m-3"
@@ -86,29 +97,36 @@
                 </ul>
             </div>
 
+            <!-- todolist footer -->
             <div class="d-flex justify-content-between mb-2">
                 <div class="d-flex align-items-center">
+                    <!-- toggle all todo -->
                     <input type="checkbox"
                         @click="toggleAllTodo"
                         :checked="checkAllTodo = 
                         ( doneCount === total && total !== 0 ) ? true : false" 
                         class="form-check m-4"/>
+                    <!-- todos scoreboard -->
                     <h3 class="text-dark-gray">
                         已完成 <span v-text="doneCount = todos.reduce(( pre, cur ) =>
                             pre + ( cur.done ? 1 : 0), 0)"></span> / 
                         全部 <span v-text="total = todos.length"></span>
                     </h3>
                 </div>
+                <!-- clear all done todo -->
                 <button type="button"
                     @click="clearAllDone"
-                    class="btn btn-text-warning m-4 me-8">清除已完成項目</button>
+                    class="btn btn-text-warning m-4 me-8">清除已完成項目
+                </button>
             </div>
 
         </div>
         <footer>
+            <!-- UI 設計來自於 六角學院 -->
             <div class="text-primary">UI design from 
                 <a href="https://www.hexschool.com/" title="Freepik">Hexschool</a>
             </div>
+            <!-- Icon 來自於 Freepik -->
             <div class="text-primary">Icons made by 
                 <a href="https://www.freepik.com" title="Freepik">Freepik</a> from 
                 <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
@@ -116,26 +134,37 @@
         </footer>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-    crossorigin="anonymous"></script>
+<!-- 引入 Vue 環境 -->
 <script src="https://unpkg.com/vue@next"></script>
 <script>
     Vue.createApp({
+    // 定義資料
     data() {
+        // 必須 return
         return {
+            // 接收新 todo 的 todo
             newTodo: '',
+            // 集中所有 todo 的 array
             todos: [],
+            // 完成 todo 的數量
             doneCount: 0,
+            // 所有 todo 的數量
             total: 0,
+            // 抓取資料的名稱
             cacheName: '',
+            // 抓取資料的 ID
             cacheId: '',
+            // 當前的過濾模式
             filterType: 'all',
+            // 當前所有 todo 的進度
             checkAllTodo: false,
         }
     },
+    // 刷新畫面不會修改原資料
     computed: {
+        // 過濾分類清單
         filterTodos() {
+            // 清單目前模式
             switch ( this.filterType ) {
                 case 'undone':
                 return this.todos.filter( item => !item.done);
@@ -146,6 +175,7 @@
             }
         }
     },
+    // 方法集
     methods: {
         // 新增 todo
         addTodo() {
@@ -245,7 +275,9 @@
             localStorage.setItem( 'todo_list_history', localHistory );
         },
     },
+    // 初始化
     mounted() {
+        // 初始化接收歷史紀錄
         this.getHistory();
     },
     }).mount('#app');

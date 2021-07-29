@@ -1,0 +1,266 @@
+$primary:       #ffd370;
+$warning:       #f55;
+$hexschool:     #69f0af;
+
+$font-family:   'Noto Sans', 'Baloo 2';
+
+@import './reset';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap');
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
+// base
+body {
+    font-family: $font-family;
+    font-size: 16px;
+    color: #eee;
+    line-height: 1.5;
+    background-color: darken( darkgreen, 15);
+}
+a {
+    color: $hexschool;
+}
+.fs-1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+.container {
+    height: 80vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+.top_right {
+    top: 4%;
+    right: 38%;
+}
+.right {
+    top: 35%;
+    right: 26%;
+}
+.bottom_right {
+    bottom: 5%;
+    right: 35%;
+}
+.bottom_left {
+    bottom: 12%;
+    left: 28%;
+}
+.top_left {
+    top: 16%;
+    left: 30%;
+}
+.d-flex {
+    display: flex;
+}
+.justify-content-center {
+    justify-content: center;
+}
+.align-items-center {
+    align-items: center;
+}
+.align-items-end {
+    align-items: flex-end;
+}
+.flex-column {
+    flex-direction: column;
+}
+
+// tent
+.tent {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 80px 150px 80px;
+    border-color: transparent transparent darken( $hexschool, 50) transparent;
+    z-index: -3;
+    
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: -15px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 150px 15px;
+        border-color: transparent transparent darken( $hexschool, 40) transparent;
+        z-index: -2;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: -7px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 7px 150px 7px;
+        border-color: transparent transparent darken( $hexschool, 56) transparent;
+        z-index: -1;
+    }
+
+    &:hover {
+
+    }
+
+    .content {
+        position: absolute;
+        top: 50px;
+        left: -125px;
+        width: 250px;
+        color: #999;
+        text-align: center;
+    }
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 0 0 5px #000;
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 0 0 5px #000;
+    }
+}
+
+.firefly {
+    width: 3px;
+    height: 3px;
+    background: gold;
+    box-shadow: 0 0 10px 5px gold;
+    border-radius: 50%;
+    animation: surround 4s ease-in-out infinite;
+}
+
+@keyframes surround {
+    0% {transform: translate3d( 0, 100px, 0);}
+    25% {transform: translate3d( 85px, 70px, 10);}
+    50% {transform: translate3d( 170px, 50px, 0);}
+    75% {transform: translate3d( 85px, 80px, -10);}
+    100% {transform: translate3d( 0, 100px, 0);}
+}
+
+// fire
+.red {
+    width: 80px;
+    height: 80px;
+    background: orangered;
+    box-shadow: 0 0 10px 5px orangered,
+                0 0 1000px 500px rgba( gold, .2);
+}
+.orange {
+    width: 60px;
+    height: 60px;
+    background: orange;
+    box-shadow: 0 0 12px 6px orange;
+}
+.gold {
+    width: 45px;
+    height: 45px;
+    background: gold;
+    box-shadow: 0 0 9px 4px gold;
+}
+.white {
+    width: 35px;
+    height: 35px;
+    background: lightyellow;
+    box-shadow: 0 0 9px 4px lightyellow;
+}
+.flame-wrapper {
+    position: relative;
+    top: -10px;
+    animation: flicker 5ms ease-in infinite;
+    z-index: 100;
+}
+.flame {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border-radius: 50% 0 50% 50%;
+    transform: translate(-50%) rotate(-45deg);
+}
+@keyframes flicker {
+    0% {transform: rotate( -1deg );}
+    20% {transform: rotate( 2deg ) scaleY( 1.05 );}
+    40% {transform: rotate( -1deg );}
+    60% {transform: rotate( 1deg );}
+    80% {transform: rotate( -1deg ) scaleY( 0.9 );}
+    100% {transform: rotate( 1deg );}
+}
+
+// wood
+.wood_section {
+    height: 5px;
+    width: 5px;
+    background: darken( burlywood, 50);
+    z-index: 10;
+    border-radius: 62% 38% 44% 56% / 28% 36% 64% 72% ;
+    box-shadow: 1px 0 1px 2px darken(burlywood, 50),
+                0 1px 1px 4px darken( burlywood, 55),
+                -1px 0 1px 6px darken(burlywood, 50),
+                0 -1px 1px 8px darken( burlywood, 55),
+                1px 0 1px 10px darken(burlywood, 50),
+                0 1px 1px 12px darken( burlywood, 55),
+                -1px 0 1px 14px darken(burlywood, 50),
+                0 -1px 1px 16px darken( burlywood, 55),
+                1px 0 1px 18px darken(burlywood, 50),
+                0 1px 1px 20px darken( burlywood, 55),
+                -1px 0 1px 22px darken(burlywood, 50),
+                0 -1px 1px 24px darken( burlywood, 55),
+                1px 0 0 26px darken(burlywood, 50),;
+}
+.wood_body {
+    position: absolute;
+    height: 57px;
+    width: 171px;
+    background: no-repeat linear-gradient( 178deg, darken(brown, 10) 0%,
+                                                darken(brown, 17) 9%,
+                                                darken(brown, 18) 21%,
+                                                darken(brown, 22) 32%,
+                                                darken(brown, 21) 43%,
+                                                darken(brown, 27) 54%,
+                                                darken(brown, 28) 63%,
+                                                darken(brown, 33) 71%,
+                                                darken(brown, 35) 78%,
+                                                darken(brown, 39) 89%, 
+                                                darken(brown, 42) 100%);
+}
+.woods {
+    position: relative;
+}
+.wood {
+    position: absolute;
+    left: -15px;
+    bottom: 0;
+}
+.wood_1 .wood_section {
+    transform: rotateX( 18deg ) rotateY(40deg) translate( calc( -50% - 100px), 48px);
+}
+.wood_1 .wood_body {
+    transform: rotateZ( -18deg ) translate( -50%, 0);
+    border-radius: 0% 14% 17% 0% / 45% 42% 50% 30% ;
+}
+.wood_2 .wood_section {
+    transform: rotateX( 18deg ) rotateY( -30deg ) translate( calc( -50% + 100px), 52px);
+}
+.wood_2 .wood_body {
+    transform: rotateZ( 32deg ) rotateX( 9deg ) translate( calc( -50% + 30px), 50px);
+    border-radius: 15% 0% 0% 13% / 45% 42% 50% 56% ;
+}
+.campfire {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate( -50%, -50%) scale( 50% );
+}
+.me-3 {
+    margin-right: 16px;
+}
+.pt-3 {
+    padding-top: 16px;
+}
