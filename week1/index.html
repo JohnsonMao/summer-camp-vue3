@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
@@ -23,92 +25,66 @@
             <div class="container">
                 <h1>
                     <a href="#">
-                        <img src="../summer-camp.png" alt="summer camp">
+                        <img src="../tent.png" alt="summer camp">
                     </a>
                 </h1>
                 <div>
-                    <button type="button" class="btn btn-outline-primary"
+                    <button type="button" class="btn btn-custom-primary"
                     @click="getData">
-                        抽卡
+                        換懸賞
                     </button>
                 </div>
             </div>
         </header>
         <div class="container">
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-                <div class="col" v-for="person in persons">
-                    <div class="card h-100"
-                    :class="
-                    (person.location.postcode % 6) == '0' ? 
-                    (person.location.postcode % 11) == '0' ? 'bg-warning' 
-                    : 'bg-success text-light'
-                    : 'bg-light'
-                    ">
-                        <div class="position-relative overflow-hidden">
-                            <div class="position-absolute top-0 start-0">
-                                <span 
-                                v-if="person.location.postcode % 66 == '0'"
-                                class="bg-warning text-light rounded-end fs-4 p-1"
-                                >
-                                SSR</span>
-                                <span 
-                                v-else-if="person.location.postcode % 6 == '0'"
-                                class="bg-success text-light rounded-end fs-4 p-1"
-                                >
-                                SR</span>
-                                <span 
-                                v-else
-                                class="bg-light text-dark rounded-end fs-4 p-1"
-                                >
-                                R</span>
-                            </div>
-                            <div class="position-absolute top-0 end-0 m-2">
-                                <button type="button" 
-                                class="btn btn-outline-danger rounded-circle lh-1 p-2" 
-                                @click="person.favorite = ! person.favorite">
-                                    <i v-if="!person.favorite" 
-                                    class="bi bi-heart fs-6"></i>
-                                    <i v-else
-                                    class="bi bi-heart-fill fs-6"></i>
+            <ul class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                <li class="col" v-for="person in persons">
+                    <a href="#" @click.default="person.aim = ! person.aim">
+                        <div class="card h-100 p-2">
+                            <h3 class="title">WANTED</h3>
+                            <div class="position-relative p-1">
+                                <div class="ratio ratio-4x3">
+                                    <img :src="person.picture.large" class="" />
+                                </div>
+                                <button v-if="!person.aim" type="button" class="position-absolute top-0 end-0 btn btn-aim">
+                                    <i class="fas fa-crosshairs"></i>
                                 </button>
+                                <button v-else type="button" class="position-absolute top-0 end-0 btn btn-aim-focus">
+                                    <i class="fas fa-crosshairs"></i>
+                                </button>
+                                <div class="position-absolute bottom-0 end-0 fs-4 m-2">
+                                    <span v-if="person.gender === 'male'">👨</span>
+                                    <span v-else>👩</span>
+                                </div>
                             </div>
-                            <img :src="person.picture.large" class="card-img-top" />
-                            <div class="position-absolute bottom-0 end-0 fs-4 m-2">
-                                <span v-if="person.gender === 'male'">👨</span>
-                                <span v-else>👩</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title fs-5">
-                                {{ person.name.title }}
-                                {{ person.name.first }}
-                                {{ person.name.last }}
-                                <br/>
-                                (
-                                    {{ person.dob.age }}
-                                )
-                            </h2>
-                            <p class="card-text">
-                                dob：
-                                    {{ new Date(person.dob.date).getMonth() }}
-                                    {{ new Date(person.dob.date).getDate() }}
-                                    {{ new Date(person.dob.date).getFullYear() }}
-                            </p>
-                            <p class="card-text">
-                                registered：
-                                {{ new Date(person.registered.date).getMonth() }}
-                                {{ new Date(person.registered.date).getDate() }}
-                                {{ new Date(person.registered.date).getFullYear() }}
-                            </p>
-                            <div class="position-absolute bottom-0 end-0 fs-4 m-2">
-                                <a href="mailto:{{ person.email }}" class="btn btn-outline-dark rounded-circle border-0 lh-1 p-2">
-                                    <i class="bi bi-envelope fs-6"></i>
-                                </a>
+                            <div class="card-body p-1 pb-4">
+                                <div class="position-absolute ss-lb">§</div>
+                                <div class="position-absolute ss-rb">§</div>
+                                <h4 class="fs-4 d-flex justify-content-between">
+                                    <span>DEAD</span>
+                                    <span>OR</span>
+                                    <span>ALIVE</span>
+                                </h4>
+                                <h2 class="name">
+                                    {{ person.name.first.toUpperCase() }} ·
+                                    {{ person.name.last.toUpperCase() }}
+                                </h2>
+                                <h3 class="bounty pb-2">₤ {{ person.location.street.number * 100000 }} -</h3>
+                                <div class="row position-absolute bottom-0 align-items-center pb-1">
+                                    <div class="col-8">
+                                        <img class="cover" src="./text.png" alt="text">
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="marine">
+                                            MARINE
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 
