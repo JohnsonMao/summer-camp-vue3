@@ -15,6 +15,7 @@ body {
     color: #eee;
     line-height: 1.5;
     background-color: darken( darkgreen, 15);
+    overflow: hidden;
 }
 a {
     color: $hexschool;
@@ -29,28 +30,54 @@ a {
     overflow: hidden;
     position: relative;
 }
+.position-relative {
+    position: relative;
+}
 .position-absolute {
     position: absolute;
 }
 .top_right {
     top: 4%;
-    right: 38%;
+    left: 52%;
+    
+    @media ( max-width: 768px ){
+        top: 15%;
+    }
 }
 .right {
     top: 35%;
-    right: 26%;
+    left: 64%;
+    
+    @media ( max-width: 768px ){
+        left: 75%;
+    }
 }
 .bottom_right {
-    bottom: 5%;
-    right: 35%;
+    top: 70%;
+    left: 50%;
+    
+    @media ( max-width: 768px ){
+        top: 60%;
+        left: 60%;
+    }
 }
 .bottom_left {
-    bottom: 12%;
-    left: 28%;
+    top: 60%;
+    left: 22%;
+    
+    @media ( max-width: 768px ){
+        top: 56%;
+        left:15%
+    }
 }
 .top_left {
-    top: 16%;
-    left: 30%;
+    top: 10%;
+    left: 26%;
+    
+    @media ( max-width: 768px ){
+        top: 27%;
+        left: 20%;
+    }
 }
 .d-flex {
     display: flex;
@@ -75,8 +102,16 @@ a {
     height: 0;
     border-style: solid;
     border-width: 0 80px 150px 80px;
-    border-color: transparent transparent darken( $hexschool, 50) transparent;
+    transform: rotate3d( 0, 1, .5, 10deg);
+    transition: all .3s;
+    border-color: transparent transparent darken( $hexschool, 60) transparent;
     z-index: -3;
+
+    
+    @media ( max-width: 930px ){
+        transform: rotate3d( 0, 0, 0, 0deg);
+        border-width: 0 40px 75px 40px;
+    }
     
     &::before {
         position: absolute;
@@ -87,8 +122,15 @@ a {
         height: 0;
         border-style: solid;
         border-width: 0 15px 150px 15px;
-        border-color: transparent transparent darken( $hexschool, 40) transparent;
+        border-color: transparent transparent darken( $hexschool, 50) transparent;
+        transition: all .3s;
         z-index: -2;
+
+        
+        @media ( max-width: 930px ){
+            left: -7.5px;
+            border-width: 0 7.5px 75px 7.5px;
+        }
     }
 
     &::after {
@@ -100,12 +142,15 @@ a {
         height: 0;
         border-style: solid;
         border-width: 0 7px 150px 7px;
-        border-color: transparent transparent darken( $hexschool, 56) transparent;
+        border-color: transparent transparent darken( $hexschool, 66) transparent;
+        transition: all .3s;
         z-index: -1;
-    }
 
-    &:hover {
-
+        
+        @media ( max-width: 930px ){
+            left: -3.5px;
+            border-width: 0 3.5px 75px 3.5px;
+        }
     }
 
     .content {
@@ -115,6 +160,13 @@ a {
         width: 250px;
         color: #999;
         text-align: center;
+        transform: rotate3d( 0, 1, .5, -10deg);
+        transition: all .3s;
+        
+        @media ( max-width: 930px ){
+            top: 0px;
+            transform: rotate3d( 0, 0, 0, 0deg);
+        }
     }
     h2 {
         font-size: 20px;
@@ -127,22 +179,43 @@ a {
         text-shadow: 0 0 5px #000;
     }
 }
-
-.firefly {
-    width: 3px;
-    height: 3px;
-    background: gold;
-    box-shadow: 0 0 10px 5px gold;
-    border-radius: 50%;
-    animation: surround 4s ease-in-out infinite;
+.tent_body {
+    position: absolute;
+    top: -9px;
+    left: 118px;
+    width: 160px;
+    height: 161px;
+    transform: rotate3d( 0, 1, .5, -10deg) skewX(19deg);
+    transition: all .3s;
+    background: linear-gradient( 180deg, darken( $hexschool, 60) 0%,
+                                        darken( $hexschool, 65) 100%,);
+    z-index: -5;
+    
+    @media ( max-width: 1280px ){
+        top: -5px;
+        width: 80px;
+    }
+    @media ( max-width: 1080px ){
+        top: -16px;
+        left: 110px;
+        width: 40px;
+        height: 175px;
+        transform: rotate3d( 0, 1, .5, -58deg) skewX(1deg);
+    }
+    @media ( max-width: 930px ){
+        width: 0;
+    }
 }
-
-@keyframes surround {
-    0% {transform: translate3d( 0, 100px, 0);}
-    25% {transform: translate3d( 85px, 70px, 10);}
-    50% {transform: translate3d( 170px, 50px, 0);}
-    75% {transform: translate3d( 85px, 80px, -10);}
-    100% {transform: translate3d( 0, 100px, 0);}
+.firefly {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: #f3ef53;
+	border-radius: 50%;
+	box-shadow: 0 0 10px rgba(115,175,64,1),
+	            0 0 15px rgba(94,159,61,1),
+	            0 0 20px rgba(115,175,64,1),
+	            0 0 25px rgba(94,159,61,1);
 }
 
 // fire
@@ -195,24 +268,47 @@ a {
 
 // wood
 .wood_section {
-    height: 5px;
-    width: 5px;
+    position: relative;
+    height: 57px;
+    width: 57px;
     background: darken( burlywood, 50);
     z-index: 10;
-    border-radius: 62% 38% 44% 56% / 28% 36% 64% 72% ;
-    box-shadow: 1px 0 1px 2px darken(burlywood, 50),
-                0 1px 1px 4px darken( burlywood, 55),
-                -1px 0 1px 6px darken(burlywood, 50),
-                0 -1px 1px 8px darken( burlywood, 55),
-                1px 0 1px 10px darken(burlywood, 50),
-                0 1px 1px 12px darken( burlywood, 55),
-                -1px 0 1px 14px darken(burlywood, 50),
-                0 -1px 1px 16px darken( burlywood, 55),
-                1px 0 1px 18px darken(burlywood, 50),
-                0 1px 1px 20px darken( burlywood, 55),
-                -1px 0 1px 22px darken(burlywood, 50),
-                0 -1px 1px 24px darken( burlywood, 55),
-                1px 0 0 26px darken(burlywood, 50),;
+    border-radius: 53% 46% 54% 42% / 65% 48% 50% 36% ;
+    box-shadow: inset 1px 0 1px 2px darken( burlywood, 50),
+                inset 0 1px 1px 4px darken(  burlywood, 55),
+                inset -1px 0 1px 6px darken( burlywood, 50),
+                inset 0 -1px 1px 8px darken(  burlywood, 55),
+                inset 1px 0 1px 10px darken( burlywood, 50),
+                inset 0 1px 1px 12px darken(  burlywood, 55),
+                inset -1px 0 1px 14px darken( burlywood, 50),
+                inset 0 -1px 1px 16px darken(  burlywood, 55),
+                inset 1px 0 1px 18px darken( burlywood, 50),
+                inset 0 1px 1px 20px darken(  burlywood, 55),
+                inset -1px 0 1px 22px darken( burlywood, 50),
+                inset 0 -1px 1px 24px darken(  burlywood, 55),
+                inset 1px 0 0 26px darken( burlywood, 50);
+    
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 57px;
+        width: 57px;
+        background: no-repeat linear-gradient( 180deg, rgba( black, 0) 0%,
+                                                    rgba( black, .9) 100%);
+        z-index: 10;
+        border-radius: 53% 46% 54% 42% / 65% 48% 50% 36% ;
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 57px;
+        width: 57px;
+        border-radius: 53% 46% 54% 42% / 65% 48% 50% 36% ;
+    }
 }
 .wood_body {
     position: absolute;
@@ -239,24 +335,210 @@ a {
     bottom: 0;
 }
 .wood_1 .wood_section {
-    transform: rotateX( 18deg ) rotateY(40deg) translate( calc( -50% - 100px), 48px);
+    transform: rotateX( 18deg ) rotateY(40deg) translate( calc( -50% - 110px), 84px);
+    &::after {
+        animation: swing_1 .5s ease-in infinite;
+    }
 }
 .wood_1 .wood_body {
     transform: rotateZ( -18deg ) translate( -50%, 0);
     border-radius: 0% 14% 17% 0% / 45% 42% 50% 30% ;
+    animation: swing_1 .5s ease-in infinite;
 }
 .wood_2 .wood_section {
-    transform: rotateX( 18deg ) rotateY( -30deg ) translate( calc( -50% + 100px), 52px);
+    transform: rotateX( 18deg ) rotateY( -30deg ) translate( calc( -50% + 100px), 77px);
+    &::after {
+        animation: swing_2 .5s ease-in infinite;
+    }
 }
 .wood_2 .wood_body {
     transform: rotateZ( 32deg ) rotateX( 9deg ) translate( calc( -50% + 30px), 50px);
     border-radius: 15% 0% 0% 13% / 45% 42% 50% 56% ;
+    animation: swing_2 .5s ease-in infinite;
+}
+
+@keyframes swing_1 {
+	0%, 100% {
+		box-shadow: -6px 12px 30px 5px #000;
+	}
+	50% {
+		box-shadow: -8px 14px 30px 6px #000;
+	}
+}
+@keyframes swing_2 {
+	0%, 100% {
+		box-shadow: 10px 20px 30px 5px #000;
+	}
+	50% {
+		box-shadow: 12px 22px 30px 6px #000;
+	}
 }
 .campfire {
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translate( -50%, -50%) scale( 50% );
+    @media ( max-width: 768px ){
+        top: 50%;
+        left: 50%
+    }
+}
+
+// shadow
+.shadow {
+    display: block;
+    width: 300px;
+    @media ( max-width: 1280px ){
+        width: 220px;
+    }
+    @media ( max-width: 1080px ){
+        width: 180px;
+    }
+    @media ( max-width: 930px ){
+        width: 80px;
+    }
+    
+    &:hover {
+        .tent {
+            border-color: transparent transparent darken( $hexschool, 55) transparent;
+            
+            &::before {
+                left: -30px;
+                border-width: 0 30px 150px 30px;
+                border-color: transparent transparent darken( $hexschool, 45) transparent;
+            }
+            &::after {
+                left: -22px;
+                border-width: 0 22px 150px 22px;
+                border-color: transparent transparent darken( gold, 0) transparent;
+            }
+            .content {
+                color: #eee;
+            }
+        }
+        .tent_body {
+            background: linear-gradient( 180deg, darken( $hexschool, 58) 0%,
+                                                darken( $hexschool, 63) 100%,);
+        }
+    }
+
+    &_1 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_1 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_2 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_2 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_3 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_3 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_4 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_4 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_5 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_5 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+}
+
+
+@keyframes swing_shadow_1 {
+	0%, 100% {
+		box-shadow: 20px -20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: 18px -22px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_2 {
+	0%, 100% {
+		box-shadow: 20px 0px 80px 60px #000;
+	}
+	50% {
+		box-shadow: 18px -2px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_3 {
+	0%, 100% {
+		box-shadow: 20px 20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: 18px 18px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_4 {
+	0%, 100% {
+		box-shadow: -20px 20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: -22px 18px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_5 {
+	0%, 100% {
+		box-shadow: -20px -20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: -22px -22px 80px 50px #000;
+	}
 }
 .me-3 {
     margin-right: 16px;

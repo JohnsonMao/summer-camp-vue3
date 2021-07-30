@@ -22,16 +22,17 @@
             六角學院 Vue 3 新手夏令營
         </a>
     </h1>
-    <div class="container">
+    <div class="container" id="container">
         <ul class="">
             <li class="position-absolute top_right">
-                <a href="https://johnsonmao.github.io/summer-camp-vue3/week1">
+                <a class="position-relative shadow shadow_1" 
+                href="https://johnsonmao.github.io/summer-camp-vue3/week1">
+                        <div class="tent_body"></div>
                     <div class="tent">
                         <div class="content">
                             <h2 class="">第一堂<br>Vue 3 起步走</h2>
                             <h3>選賞單</h3>
                         </div>
-                        <div class="firefly"></div>
                     </div>
                 </a>
                 <div class="">
@@ -42,7 +43,9 @@
                 </div>
             </li>
             <li class="position-absolute right">
-                <a href="https://johnsonmao.github.io/summer-camp-vue3/week2">
+                <a class="position-relative shadow shadow_2" 
+                href="https://johnsonmao.github.io/summer-camp-vue3/week2">
+                    <div class="tent_body"></div>
                     <div class="tent">
                         <div class="content">
                             <h2 class="">第二堂<br>Vue 3 與指令</h2>
@@ -58,7 +61,9 @@
                 </div>
             </li>
             <li class="position-absolute bottom_right">
-                <a href="https://johnsonmao.github.io/summer-camp-vue3/week3">
+                <a class="position-relative shadow shadow_3" 
+                href="https://johnsonmao.github.io/summer-camp-vue3/week3">
+                        <div class="tent_body"></div>
                     <div class="tent">
                         <div class="content">
                             <h2 class="">第三堂<br>Vue 3 Options API</h2>
@@ -74,7 +79,9 @@
                 </div>
             </li>
             <li class="position-absolute bottom_left">
-                <a href="https://johnsonmao.github.io/summer-camp-vue3/week4">
+                <a class="position-relative shadow shadow_4" 
+                href="https://johnsonmao.github.io/summer-camp-vue3/week4">
+                    <div class="tent_body"></div>
                 <div class="tent">
                         <div class="content">
                             <h2 class="">第四堂<br>Vue 3 Composition API</h2>
@@ -90,7 +97,9 @@
                 </div>
             </li>
             <li class="position-absolute top_left">
-                <a href="https://johnsonmao.github.io/summer-camp-vue3/week5">
+                <a class="position-relative shadow shadow_5" 
+                href="https://johnsonmao.github.io/summer-camp-vue3/week5">
+                    <div class="tent_body"></div>
                     <div class="tent">
                         <div class="content">
                             <h2 class="">第五堂<br>Vue 3 & Firebase</h2>
@@ -138,5 +147,54 @@
             <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
         </div>
     </footer>
+
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.2/gsap.min.js"></script>
+    <script>
+        var container = document.querySelector("#container");
+        var count = 30;
+        var w, h;
+
+        function random(min, max) {
+            return gsap.utils.random(min, max);
+        }
+
+        function createFirefly() {
+            var firefly = document.createElement("div");
+            w = window.innerWidth;
+            h = window.innerHeight;
+            firefly.classList.add("firefly");
+            container.appendChild(firefly);
+            gsap.set(firefly, {
+                x: random(0, w),
+                y: random(0, h), 
+                scale: random(0.5, 1.0),
+                opacity: 0
+            });
+            gsap.to(firefly, {
+                x: "+=" + random(-w/2, w/2),
+                y: "+=" + random(-h/2, h/2),
+                duration: random(20, 23),
+                ease: Linear.easeNone
+            });
+            gsap.to(firefly, {
+                opacity: 1,
+                repeat: 5,
+                yoyo: true,
+                duration: random(2, 3),
+                delay: random(0, 2),
+                ease: Power2.easeInOut,
+                onComplete: function() {
+                    firefly.parentNode.removeChild(firefly);
+                    createFirefly();
+                }
+            });
+        }
+
+        for (var index = 0; index < count; index++) {
+            createFirefly();
+        }
+    </script>
 </body>
 </html>
