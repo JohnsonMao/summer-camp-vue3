@@ -11,33 +11,32 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 
     <!-- css -->
-    <link rel="stylesheet" href="./scss/all.css">
+    <link rel="stylesheet" href="./scss/index.css">
 
 </head>
 <body>  
-    <h1 class="d-flex justify-content-center align-items-center">
-        <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/"
-        class="d-flex align-items-end fs-1">
-            <img src="./tent.png" class="me-3" alt="summer camp">
+    <h1 class="activity_title">
+        <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
+            <img src="./tent.png" alt="summer camp">
             六角學院 Vue 3 新手夏令營
         </a>
     </h1>
-    <div class="container" id="container">
-        <ul class="">
+    <div class="container-box" id="container-box">
+        <ul>
             <li class="position-absolute top_right">
                 <a class="position-relative shadow shadow_1" 
                 href="https://johnsonmao.github.io/summer-camp-vue3/week1">
-                        <div class="tent_body"></div>
-                    <div class="tent">
-                        <div class="content">
-                            <h2 class="">第一堂<br>Vue 3 起步走</h2>
-                            <h3>選賞單</h3>
-                        </div>
+                    <div class="tent_wrapper">
+                        <div class="tent body"></div>
+                        <div class="tent section"></div>
+                    </div>
+                    <div class="content">
+                        <h2>第一堂<br>Vue 3 起步走</h2>
+                        <h3>選賞單</h3>
                     </div>
                 </a>
-                <div class="">
+                <div>
                     <!-- <a
-                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week1">
                     Github</a> -->
                 </div>
@@ -45,17 +44,17 @@
             <li class="position-absolute right">
                 <a class="position-relative shadow shadow_2" 
                 href="https://johnsonmao.github.io/summer-camp-vue3/week2">
-                    <div class="tent_body"></div>
-                    <div class="tent">
-                        <div class="content">
-                            <h2 class="">第二堂<br>Vue 3 與指令</h2>
-                            <h3>計算機</h3>
-                        </div>
+                    <div class="tent_wrapper">
+                        <div class="tent body"></div>
+                        <div class="tent section"></div>
+                    </div>
+                    <div class="content">
+                        <h2>第二堂<br>Vue 3 與指令</h2>
+                        <h3>計算機</h3>
                     </div>
                 </a>
-                <div class="">
+                <div>
                     <!-- <a
-                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week2">
                     Github</a> -->
                 </div>
@@ -63,17 +62,17 @@
             <li class="position-absolute bottom_right">
                 <a class="position-relative shadow shadow_3" 
                 href="https://johnsonmao.github.io/summer-camp-vue3/week3">
-                        <div class="tent_body"></div>
-                    <div class="tent">
-                        <div class="content">
-                            <h2 class="">第三堂<br>Vue 3 Options API</h2>
-                            <h3>Todos 工具</h3>
-                        </div>
+                    <div class="tent_wrapper">
+                        <div class="tent body"></div>
+                        <div class="tent section"></div>
+                    </div>
+                    <div class="content">
+                        <h2>第三堂<br>Vue 3 Options API</h2>
+                        <h3>Todos 工具</h3>
                     </div>
                 </a>
-                <div class="">
+                <div>
                     <!-- <a
-                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week3">
                     Github</a> -->
                 </div>
@@ -81,17 +80,17 @@
             <li class="position-absolute bottom_left">
                 <a class="position-relative shadow shadow_4" 
                 href="https://johnsonmao.github.io/summer-camp-vue3/week4">
-                    <div class="tent_body"></div>
-                <div class="tent">
-                        <div class="content">
-                            <h2 class="">第四堂<br>Vue 3 Composition API</h2>
-                            <h3>Demo</h3>
-                        </div>
+                    <div class="tent_wrapper_2">
+                        <div class="tent body"></div>
+                        <div class="tent section"></div>
+                    </div>
+                    <div class="content">
+                        <h2>第四堂<br>Vue 3 Composition API</h2>
+                        <h3>Demo</h3>
                     </div>
                 </a>
-                <div class="">
+                <div>
                     <!-- <a
-                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week4">
                     Github</a> -->
                 </div>
@@ -99,17 +98,17 @@
             <li class="position-absolute top_left">
                 <a class="position-relative shadow shadow_5" 
                 href="https://johnsonmao.github.io/summer-camp-vue3/week5">
-                    <div class="tent_body"></div>
-                    <div class="tent">
-                        <div class="content">
-                            <h2 class="">第五堂<br>Vue 3 & Firebase</h2>
-                            <h3>即時聊天室</h3>
-                        </div>
+                    <div class="tent_wrapper_2">
+                        <div class="tent body"></div>
+                        <div class="tent section"></div>
+                    </div>
+                    <div class="content">
+                        <h2>第五堂<br>Vue 3 & Firebase</h2>
+                        <h3>即時聊天室</h3>
                     </div>
                 </a>
-                <div class="">
+                <div>
                     <!-- <a
-                    class="" 
                     href="https://github.com/johnsonmao/summer-camp-vue3/tree/main/week5">
                     Github</a> -->
                 </div>
@@ -136,7 +135,7 @@
         </div>
     </div>
     
-    <footer class="d-flex justify-content-center align-items-center flex-column pt-3">
+    <footer class="footer">
         <!-- UI 設計來自於 六角學院 -->
         <div class="text-primary">Course from 
             <a href="https://www.hexschool.com/" title="Freepik">Hexschool</a>
@@ -152,7 +151,7 @@
     <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.2/gsap.min.js"></script>
     <script>
-        var container = document.querySelector("#container");
+        var container = document.querySelector("#container-box");
         var count = 30;
         var w, h;
 

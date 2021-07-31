@@ -1,0 +1,106 @@
+.wood_section {
+    position: relative;
+    height: 57px;
+    width: 57px;
+    background: darken( burlywood, 50);
+    z-index: 10;
+    border-radius: 53% 46% 54% 42% / 65% 48% 50% 36% ;
+    box-shadow: inset 1px 0 1px 2px darken( burlywood, 50),
+                inset 0 1px 1px 4px darken(  burlywood, 55),
+                inset -1px 0 1px 6px darken( burlywood, 50),
+                inset 0 -1px 1px 8px darken(  burlywood, 55),
+                inset 1px 0 1px 10px darken( burlywood, 50),
+                inset 0 1px 1px 12px darken(  burlywood, 55),
+                inset -1px 0 1px 14px darken( burlywood, 50),
+                inset 0 -1px 1px 16px darken(  burlywood, 55),
+                inset 1px 0 1px 18px darken( burlywood, 50),
+                inset 0 1px 1px 20px darken(  burlywood, 55),
+                inset -1px 0 1px 22px darken( burlywood, 50),
+                inset 0 -1px 1px 24px darken(  burlywood, 55),
+                inset 1px 0 0 26px darken( burlywood, 50);
+    
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 57px;
+        width: 57px;
+        background: no-repeat linear-gradient( 180deg, rgba( black, 0) 0%,
+                                                    rgba( black, .9) 100%);
+        z-index: 10;
+        border-radius: 53% 46% 54% 42% / 65% 48% 50% 36% ;
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 57px;
+        width: 57px;
+        border-radius: 53% 46% 54% 42% / 65% 48% 50% 36% ;
+    }
+}
+.wood_body {
+    position: absolute;
+    height: 57px;
+    width: 171px;
+    background: no-repeat linear-gradient( 178deg, darken(brown, 10) 0%,
+                                                darken(brown, 17) 9%,
+                                                darken(brown, 18) 21%,
+                                                darken(brown, 22) 32%,
+                                                darken(brown, 21) 43%,
+                                                darken(brown, 27) 54%,
+                                                darken(brown, 28) 63%,
+                                                darken(brown, 33) 71%,
+                                                darken(brown, 35) 78%,
+                                                darken(brown, 39) 89%, 
+                                                darken(brown, 42) 100%);
+}
+.woods {
+    position: relative;
+}
+.wood {
+    position: absolute;
+    left: -15px;
+    bottom: 0;
+}
+.wood_1 .wood_section {
+    transform: rotateX( 18deg ) rotateY(40deg) translate( calc( -50% - 110px), 84px);
+    &::after {
+        animation: swing_1 .5s ease-in infinite;
+    }
+}
+.wood_1 .wood_body {
+    transform: rotateZ( -18deg ) translate( -50%, 0);
+    border-radius: 0% 14% 17% 0% / 45% 42% 50% 30% ;
+    animation: swing_1 .5s ease-in infinite;
+}
+.wood_2 .wood_section {
+    transform: rotateX( 18deg ) rotateY( -30deg ) translate( calc( -50% + 100px), 77px);
+    &::after {
+        animation: swing_2 .5s ease-in infinite;
+    }
+}
+.wood_2 .wood_body {
+    transform: rotateZ( 32deg ) rotateX( 9deg ) translate( calc( -50% + 30px), 50px);
+    border-radius: 15% 0% 0% 13% / 45% 42% 50% 56% ;
+    animation: swing_2 .5s ease-in infinite;
+}
+
+@keyframes swing_1 {
+	0%, 100% {
+		box-shadow: -6px 12px 30px 5px #000;
+	}
+	50% {
+		box-shadow: -8px 14px 30px 6px #000;
+	}
+}
+@keyframes swing_2 {
+	0%, 100% {
+		box-shadow: 10px 20px 30px 5px #000;
+	}
+	50% {
+		box-shadow: 12px 22px 30px 6px #000;
+	}
+}

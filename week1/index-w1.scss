@@ -7,12 +7,13 @@ $num: 'Style script';
 
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Style+Script&display=swap');
 @import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+@import '../scss/layout';
+
 body {
     font-family: $font-family;
     color: $primary;
     background: no-repeat url('./wood.jpg');
     background-size: cover;
-    padding: 30px;
 }
 a {
     color: $primary;
@@ -44,15 +45,17 @@ img {
     display: block;
     object-fit: cover;
 }
-.btn-custom-primary {
-    background-color: $card-bg;
-    color: $primary;
-    font-weight: bold;
-    border: 1px solid $primary;
+.nav {
+    padding: 8px;
+    background: rgba( $primary, .8 );
+    .btn {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
 
-    &:hover {
-        background-color: $primary;
-        color:  $card-bg;
+        &:hover {
+            color: lighten( $primary, 40 );
+        }
     }
 }
 .btn-aim {

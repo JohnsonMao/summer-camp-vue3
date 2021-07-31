@@ -16,28 +16,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     
     <!-- custom CSS -->
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./index-w1.css">
 </head>
 
 <body>
     <div id="app">
-        <header class="navbar">
+        
+        <h1 class="activity_title m-0">
+            <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
+                <img src="../tent.png" alt="summer camp">
+                六角學院 Vue 3 新手夏令營
+            </a>
+        </h1>
+        
+        <nav class="nav">
             <div class="container">
-                <h1>
-                    <a href="#">
-                        <img src="../tent.png" alt="summer camp">
-                    </a>
-                </h1>
-                <div>
-                    <button type="button" class="btn btn-custom-primary"
-                    @click="getData">
-                        換懸賞
-                    </button>
-                </div>
+                <button type="button" class="btn"
+                @click="getData">
+                    換懸賞
+                </button>
             </div>
-        </header>
+        </nav>
+
         <div class="container">
-            <ul class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+            <ul class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 p-3">
                 <li class="col" v-for="person in persons">
                     <a href="#" @click.default="person.aim = ! person.aim">
                         <div class="card h-100 p-2">
@@ -86,6 +88,18 @@
                 </li>
             </ul>
         </div>
+        
+        <footer class="footer">
+            <!-- UI 設計來自於 六角學院 -->
+            <div>Course from 
+                <a href="https://www.hexschool.com/" title="Freepik">Hexschool</a>
+            </div>
+            <!-- Icon 來自於 Freepik -->
+            <div>Icons made by 
+                <a href="https://www.freepik.com" title="Freepik">Freepik</a> from 
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+            </div>
+        </footer>
     </div>
 
     <!-- Vue 3 CDN -->

@@ -1,4 +1,5 @@
 $primary:   #ffd370;
+@import '../scss/layout';
 html,
 body {
     height: 100%;
@@ -13,6 +14,10 @@ body {
     @media( max-width: 767px ){
         font-size: 1rem;
     }
+}
+a {
+    color: darken( $primary, 40);
+    text-decoration: none;
 }
 input {
     color: darken( $primary, 40 );
@@ -136,5 +141,5 @@ input {
     margin-top: 16px;
     font-size: 16px;
     font-weight: bold;
-    text-indent: -1.25rem;
+    margin-bottom: 0;
 }

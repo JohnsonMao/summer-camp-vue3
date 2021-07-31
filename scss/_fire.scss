@@ -1,0 +1,46 @@
+.red {
+    width: 80px;
+    height: 80px;
+    background: orangered;
+    box-shadow: 0 0 10px 5px orangered,
+                0 0 1000px 500px rgba( gold, .2);
+}
+.orange {
+    width: 60px;
+    height: 60px;
+    background: orange;
+    box-shadow: 0 0 12px 6px orange;
+}
+.gold {
+    width: 45px;
+    height: 45px;
+    background: gold;
+    box-shadow: 0 0 9px 4px gold;
+}
+.white {
+    width: 35px;
+    height: 35px;
+    background: lightyellow;
+    box-shadow: 0 0 9px 4px lightyellow;
+}
+.flame-wrapper {
+    position: relative;
+    top: -10px;
+    animation: flicker 5ms ease-in infinite;
+    z-index: 100;
+}
+.flame {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border-radius: 50% 0 50% 50%;
+    transform: translate(-50%) rotate(-45deg);
+}
+@keyframes flicker {
+    0% {transform: rotate( -1deg );}
+    20% {transform: rotate( 2deg ) scaleY( 1.05 );}
+    40% {transform: rotate( -1deg );}
+    60% {transform: rotate( 1deg );}
+    80% {transform: rotate( -1deg ) scaleY( 0.9 );}
+    100% {transform: rotate( 1deg );}
+}

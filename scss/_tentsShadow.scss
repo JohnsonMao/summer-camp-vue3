@@ -1,0 +1,148 @@
+.shadow {
+    display: block;
+    width: 200px;
+    @media ( max-width: 930px ){
+    }
+    
+    &:hover {
+        .tent {
+            border-color: transparent transparent darken( $hexschool, 50) transparent;
+            
+            &::before {
+                left: -30px;
+                border-width: 0 30px 139px 30px;
+                border-color: transparent transparent darken( $hexschool, 35) transparent;
+            }
+            &::after {
+                left: -22px;
+                border-width: 0 22px 139px 22px;
+                border-color: transparent transparent darken( gold, 0) transparent;
+            }
+        }
+        .tent_body {
+            background: linear-gradient( 180deg, darken( $hexschool, 50) 0%,
+                                                darken( $hexschool, 60) 100%,);
+        }
+        .content {
+            color: #eee;
+        }
+    }
+
+    &_1 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_1 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_2 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_2 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_3 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_3 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_4 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_4 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+    &_5 {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: 10px;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 5%;
+            transform: rotate3d( 1, 0, 0, 45deg);
+            animation: swing_shadow_5 .5s ease-in infinite;
+            z-index: -10;
+        }
+    }
+}
+
+
+@keyframes swing_shadow_1 {
+	0%, 100% {
+		box-shadow: 20px -20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: 18px -22px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_2 {
+	0%, 100% {
+		box-shadow: 20px 0px 80px 60px #000;
+	}
+	50% {
+		box-shadow: 18px -2px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_3 {
+	0%, 100% {
+		box-shadow: 20px 20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: 18px 18px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_4 {
+	0%, 100% {
+		box-shadow: -20px 20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: -22px 18px 80px 50px #000;
+	}
+}
+@keyframes swing_shadow_5 {
+	0%, 100% {
+		box-shadow: -20px -20px 80px 60px #000;
+	}
+	50% {
+		box-shadow: -22px -22px 80px 50px #000;
+	}
+}

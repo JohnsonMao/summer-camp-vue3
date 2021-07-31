@@ -1,0 +1,12 @@
+@import './fire';
+@import './wood';
+
+.campfire {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate( -50%, -50%) scale( 50% );
+    @media ( max-width: 768px ){
+        top: 80%;
+    }
+}

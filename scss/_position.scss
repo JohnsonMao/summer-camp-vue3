@@ -1,0 +1,46 @@
+
+.position-relative {
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+}
+.top_right {
+    top: 30%;
+    left: 48%;
+}
+.right {
+    top: 45%;
+    left: 68%;
+
+    @media ( max-width: 768px ){
+        top: 50%;
+        left: 64%;
+    }
+}
+.bottom_right {
+    top: 85%;
+    left: 60%;
+    
+    @media ( max-width: 768px ){
+        top: 72%;
+        left: 68%;
+    }
+}
+.bottom_left {
+    top: 82%;
+    right: 60%;
+    
+    @media ( max-width: 768px ){
+        top: 68%;
+        right: 68%;
+    }
+}
+.top_left {
+    top: 46%;
+    right: 65%;
+    
+    @media ( max-width: 768px ){
+        top: 40%;
+    }
+}

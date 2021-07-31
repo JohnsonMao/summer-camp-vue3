@@ -1,0 +1,92 @@
+.tent_wrapper {
+    position: relative;
+    transform: scale( 80% );
+    & + .content {
+        left: -80px;
+    }
+}
+.tent_wrapper_2 {
+    position: relative;
+    transform: scale( 80% ) rotateY( 180deg );
+    & + .content {
+        left: 0px;
+    }
+}
+.tent {
+    position: absolute;
+    bottom: 0;
+
+    &.section {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 80px 139px 80px;
+        border-color: transparent transparent darken( $hexschool, 50) transparent;
+        transform: translate( -50%, 0) skewY( 10deg );
+    
+    
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: -15px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 139px 15px;
+            border-color: transparent transparent darken( $hexschool, 35) transparent;
+            transition: all .3s;
+            z-index: -2;
+    }
+    &::after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: -7px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 7px 139px 7px;
+            border-color: transparent transparent darken( $hexschool, 60) transparent;
+            transition: all .3s;
+            z-index: -1;
+        }
+    }
+    &.body {
+        height: 154px;
+        width: 139px;
+        background: linear-gradient( 180deg, darken( $hexschool, 50) 0%,
+                                            darken( $hexschool, 60) 100%,);
+        transform: skewX( 27.7deg ) translate( 32px, 2px) skewY(-10deg);
+    }
+}
+.content {
+    position: absolute;
+    top: -119px;
+    width: 300px;
+    color: #999;
+    text-align: center;
+    transition: all .3s;
+    
+    @media ( max-width: 768px ){
+        top: -99px;
+    }
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+        text-shadow: 0 0 5px #000;
+        
+        @media ( max-width: 768px ){
+            font-size: 16px;
+        }
+    }
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        text-shadow: 0 0 5px #000;
+        
+        @media ( max-width: 768px ){
+            font-size: 16px;
+        }
+    }
+}

@@ -1,11 +1,64 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Style+Script&display=swap");
 @import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+.activity_title {
+  padding: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.activity_title a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .activity_title a {
+    font-size: 24px;
+  }
+}
+
+.container-box {
+  height: 81.5vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  padding: 8px;
+}
+
 body {
   font-family: "Abril fatface";
   color: #553a27;
   background: no-repeat url("./wood.jpg");
   background-size: cover;
-  padding: 30px;
 }
 
 a {
@@ -31,16 +84,19 @@ img {
      object-fit: cover;
 }
 
-.btn-custom-primary {
-  background-color: #d8c19f;
-  color: #553a27;
-  font-weight: bold;
-  border: 1px solid #553a27;
+.nav {
+  padding: 8px;
+  background: rgba(85, 58, 39, 0.8);
 }
 
-.btn-custom-primary:hover {
-  background-color: #553a27;
-  color: #d8c19f;
+.nav .btn {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav .btn:hover {
+  color: #c69e82;
 }
 
 .btn-aim {
@@ -117,4 +173,4 @@ img {
   -webkit-transform: rotate3d(0, 1, 0, 45deg);
           transform: rotate3d(0, 1, 0, 45deg);
 }
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=index-w1.css.map */
