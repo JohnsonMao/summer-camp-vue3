@@ -16,6 +16,7 @@
             &::after {
                 left: -22px;
                 border-width: 0 22px 139px 22px;
+                box-shadow: 0 100px 100px 1px gold;
                 border-color: transparent transparent darken( gold, 0) transparent;
             }
         }

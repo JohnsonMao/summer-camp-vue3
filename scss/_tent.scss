@@ -1,15 +1,24 @@
-.tent_wrapper {
+.tent_wrapper_r {
     position: relative;
     transform: scale( 80% );
     & + .content {
         left: -80px;
     }
+    &.far_long {
+        transform: scale( 60% );
+    }
+    &.far_middle {
+        transform: scale( 70% );
+    }
 }
-.tent_wrapper_2 {
+.tent_wrapper_l {
     position: relative;
     transform: scale( 80% ) rotateY( 180deg );
     & + .content {
         left: 0px;
+    }
+    &.far_middle {
+        transform: scale( 70% ) rotateY( 180deg );
     }
 }
 .tent {
@@ -37,27 +46,27 @@
             border-color: transparent transparent darken( $hexschool, 35) transparent;
             transition: all .3s;
             z-index: -2;
-    }
-    &::after {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: -7px;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 7px 139px 7px;
-            border-color: transparent transparent darken( $hexschool, 60) transparent;
-            transition: all .3s;
-            z-index: -1;
+        }
+        &::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: -7px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 7px 139px 7px;
+                border-color: transparent transparent darken( $hexschool, 60) transparent;
+                transition: all .3s;
+                z-index: -1;
         }
     }
     &.body {
-        height: 154px;
+        height: 134px;
         width: 139px;
         background: linear-gradient( 180deg, darken( $hexschool, 50) 0%,
                                             darken( $hexschool, 60) 100%,);
-        transform: skewX( 27.7deg ) translate( 32px, 2px) skewY(-10deg);
+        transform: skewX( 27.7deg ) translate( 48px, -10px) skewY(-10deg) perspective(10px) rotateY(1deg);
     }
 }
 .content {

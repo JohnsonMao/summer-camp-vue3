@@ -126,24 +126,39 @@ a {
   padding: 8px;
 }
 
-.tent_wrapper {
+.tent_wrapper_r {
   position: relative;
   -webkit-transform: scale(80%);
           transform: scale(80%);
 }
 
-.tent_wrapper + .content {
+.tent_wrapper_r + .content {
   left: -80px;
 }
 
-.tent_wrapper_2 {
+.tent_wrapper_r.far_long {
+  -webkit-transform: scale(60%);
+          transform: scale(60%);
+}
+
+.tent_wrapper_r.far_middle {
+  -webkit-transform: scale(70%);
+          transform: scale(70%);
+}
+
+.tent_wrapper_l {
   position: relative;
   -webkit-transform: scale(80%) rotateY(180deg);
           transform: scale(80%) rotateY(180deg);
 }
 
-.tent_wrapper_2 + .content {
+.tent_wrapper_l + .content {
   left: 0px;
+}
+
+.tent_wrapper_l.far_middle {
+  -webkit-transform: scale(70%) rotateY(180deg);
+          transform: scale(70%) rotateY(180deg);
 }
 
 .tent {
@@ -192,12 +207,12 @@ a {
 }
 
 .tent.body {
-  height: 154px;
+  height: 134px;
   width: 139px;
   background: -webkit-gradient(linear, left top, left bottom, from(#08522e), to(#042314));
   background: linear-gradient(180deg, #08522e 0%, #042314 100%);
-  -webkit-transform: skewX(27.7deg) translate(32px, 2px) skewY(-10deg);
-          transform: skewX(27.7deg) translate(32px, 2px) skewY(-10deg);
+  -webkit-transform: skewX(27.7deg) translate(48px, -10px) skewY(-10deg) perspective(10px) rotateY(1deg);
+          transform: skewX(27.7deg) translate(48px, -10px) skewY(-10deg) perspective(10px) rotateY(1deg);
 }
 
 .content {
@@ -269,7 +284,7 @@ a {
   z-index: -5;
 }
 
-.grass_wrapper_4 {
+.grass_wrapper_5 {
   left: 50px;
   bottom: -10px;
 }
@@ -285,8 +300,8 @@ a {
 
 .grass_1 {
   background-color: #00341a;
-  -webkit-animation: wind_1 3s ease alternate infinite;
-          animation: wind_1 3s ease alternate infinite;
+  -webkit-animation: wind_1 2s ease alternate infinite;
+          animation: wind_1 2s ease alternate infinite;
 }
 
 .grass_1::before {
@@ -301,8 +316,8 @@ a {
   -webkit-transform: rotate(8deg);
           transform: rotate(8deg);
   margin-left: 14px;
-  -webkit-animation: wind_2 3s ease alternate infinite;
-          animation: wind_2 3s ease alternate infinite;
+  -webkit-animation: wind_2 2s ease alternate infinite;
+          animation: wind_2 2s ease alternate infinite;
 }
 
 .grass_1::after {
@@ -317,16 +332,16 @@ a {
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
   margin-left: 12px;
-  -webkit-animation: wind_3 3s ease alternate infinite;
-          animation: wind_3 3s ease alternate infinite;
+  -webkit-animation: wind_3 2s ease alternate infinite;
+          animation: wind_3 2s ease alternate infinite;
 }
 
 .grass_2 {
   background-color: #001609;
   border-radius: 0 100% 0 50%;
   height: 24px;
-  -webkit-animation: wind_1 3s ease alternate infinite;
-          animation: wind_1 3s ease alternate infinite;
+  -webkit-animation: wind_1 2s ease alternate infinite;
+          animation: wind_1 2s ease alternate infinite;
 }
 
 .grass_2::before {
@@ -341,8 +356,8 @@ a {
   -webkit-transform: rotate(6deg);
           transform: rotate(6deg);
   margin-left: -8px;
-  -webkit-animation: wind_2 3s ease alternate infinite;
-          animation: wind_2 3s ease alternate infinite;
+  -webkit-animation: wind_2 2s ease alternate infinite;
+          animation: wind_2 2s ease alternate infinite;
 }
 
 .grass_2::after {
@@ -357,8 +372,8 @@ a {
   -webkit-transform: rotate(-12deg);
           transform: rotate(-12deg);
   margin-left: -4px;
-  -webkit-animation: wind_3 3s ease alternate infinite;
-          animation: wind_3 3s ease alternate infinite;
+  -webkit-animation: wind_3 2s ease alternate infinite;
+          animation: wind_3 2s ease alternate infinite;
 }
 
 .grass_3 {
@@ -368,8 +383,8 @@ a {
   -webkit-transform: rotate(-1deg);
           transform: rotate(-1deg);
   margin-left: -2px;
-  -webkit-animation: wind_1 3s ease alternate infinite;
-          animation: wind_1 3s ease alternate infinite;
+  -webkit-animation: wind_1 2s ease alternate infinite;
+          animation: wind_1 2s ease alternate infinite;
 }
 
 .grass_3::before {
@@ -384,8 +399,8 @@ a {
   -webkit-transform: rotate(8deg);
           transform: rotate(8deg);
   margin-left: -20px;
-  -webkit-animation: wind_2 3s ease alternate infinite;
-          animation: wind_2 3s ease alternate infinite;
+  -webkit-animation: wind_2 2s ease alternate infinite;
+          animation: wind_2 2s ease alternate infinite;
 }
 
 .grass_3::after {
@@ -400,8 +415,8 @@ a {
   -webkit-transform: rotate(-8deg);
           transform: rotate(-8deg);
   margin-left: -24px;
-  -webkit-animation: wind_3 3s ease alternate infinite;
-          animation: wind_3 3s ease alternate infinite;
+  -webkit-animation: wind_3 2s ease alternate infinite;
+          animation: wind_3 2s ease alternate infinite;
 }
 
 @-webkit-keyframes wind_1 {
@@ -782,6 +797,8 @@ a {
 .shadow:hover .tent::after {
   left: -22px;
   border-width: 0 22px 139px 22px;
+  -webkit-box-shadow: 0 100px 100px 1px gold;
+          box-shadow: 0 100px 100px 1px gold;
   border-color: transparent transparent gold transparent;
 }
 

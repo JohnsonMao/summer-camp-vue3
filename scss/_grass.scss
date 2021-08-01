@@ -20,7 +20,7 @@
         left: -55px;
         z-index: -5;
     }
-    &_4 {
+    &_5 {
         left: 50px;
         bottom: -10px;
     }
@@ -34,7 +34,7 @@
 
     &_1 {
         background-color: darken( #00e676, 35);
-        animation: wind_1 3s ease alternate infinite;
+        animation: wind_1 2s ease alternate infinite;
         
         &::before {
             content: '';
@@ -46,7 +46,7 @@
             transform-origin: 50% 100%;
             transform: rotate( 8deg );
             margin-left: 14px;
-            animation: wind_2 3s ease alternate infinite;
+            animation: wind_2 2s ease alternate infinite;
         }
         
         &::after {
@@ -59,7 +59,7 @@
             transform-origin: 50% 100%;
             transform: rotate( -10deg );
             margin-left: 12px;
-            animation: wind_3 3s ease alternate infinite;
+            animation: wind_3 2s ease alternate infinite;
         }
     }
 
@@ -67,7 +67,7 @@
         background-color: darken( #00c853, 35);
         border-radius: 0 100% 0 50%;
         height: 24px;
-        animation: wind_1 3s ease alternate infinite;
+        animation: wind_1 2s ease alternate infinite;
         
         &::before {
             content: '';
@@ -79,7 +79,7 @@
             transform-origin: 50% 100%;
             transform: rotate( 6deg );
             margin-left: -8px;
-            animation: wind_2 3s ease alternate infinite;
+            animation: wind_2 2s ease alternate infinite;
         }
         
         &::after {
@@ -92,7 +92,7 @@
             transform-origin: 50% 100%;
             transform: rotate( -12deg );
             margin-left: -4px;
-            animation: wind_3 3s ease alternate infinite;
+            animation: wind_3 2s ease alternate infinite;
         }
     }
     &_3 {
@@ -101,7 +101,7 @@
         height: 28px;
         transform: rotate(-1deg);
         margin-left: -2px;
-        animation: wind_1 3s ease alternate infinite;
+        animation: wind_1 2s ease alternate infinite;
         
         &::before {
             content: '';
@@ -113,7 +113,7 @@
             transform-origin: 50% 100%;
             transform: rotate( 8deg );
             margin-left: -20px;
-            animation: wind_2 3s ease alternate infinite;
+            animation: wind_2 2s ease alternate infinite;
         }
         
         &::after {
@@ -126,7 +126,7 @@
             transform-origin: 50% 100%;
             transform: rotate( -8deg );
             margin-left: -24px;
-            animation: wind_3 3s ease alternate infinite;
+            animation: wind_3 2s ease alternate infinite;
         }
     }
 }
