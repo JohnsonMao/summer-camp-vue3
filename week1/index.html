@@ -22,31 +22,42 @@
 <body>
     <div id="app">
         
-        <h1 class="activity_title m-0">
-            <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
-                <img src="../tent.png" alt="summer camp">
-                六角學院 Vue 3 新手夏令營
-            </a>
-        </h1>
+        <header class="activity_title m-0">
+            <h1 class="m-0">
+                <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
+                    <img src="../tent.png" alt="summer camp">
+                    <span>六角學院 </span>Vue 3 <span>新手</span>夏令營
+                </a>
+            </h1>
+            <nav class="nav-custom">
+                <a href="https://johnsonmao.github.io/summer-camp-vue3/"><i class="fas fa-home"></i></a>
+                <a href="https://github.com/JohnsonMao/summer-camp-vue3/tree/main/week1"><i class="fab fa-github"></i></a>
+            </nav>
+        </header>
         
         <nav class="nav">
-            <div class="container">
+            <div class="container d-flex align-items-center justify-content-center">
                 <button type="button" class="btn"
                 @click="getData">
                     換懸賞
                 </button>
+                <select class="form-select w-auto" v-model="genderFilter">
+                    <option selected value="all">全部</option>
+                    <option value="male">男生</option>
+                    <option value="female">女生</option>
+                </select>
             </div>
         </nav>
 
-        <div class="container">
-            <ul class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 p-3">
-                <li class="col" v-for="person in persons">
+        <div class="container container-box">
+            <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xxl-5 g-3 py-3 px-5 px-lg-3">
+                <li class="col" v-for="person in filterPersons">
                     <a href="#" @click.default="person.aim = ! person.aim">
                         <div class="card h-100 p-2">
-                            <h3 class="title">WANTED</h3>
-                            <div class="position-relative p-1">
+                            <h3 class="title mb-0">WANTED</h3>
+                            <div class="position-relative">
                                 <div class="ratio ratio-4x3">
-                                    <img :src="person.picture.large" class="" />
+                                    <img :src="person.picture.large" :alt="person.name.first" />
                                 </div>
                                 <button v-if="!person.aim" type="button" class="position-absolute top-0 end-0 btn btn-aim">
                                     <i class="fas fa-crosshairs"></i>
@@ -54,25 +65,25 @@
                                 <button v-else type="button" class="position-absolute top-0 end-0 btn btn-aim-focus">
                                     <i class="fas fa-crosshairs"></i>
                                 </button>
-                                <div class="position-absolute bottom-0 end-0 fs-4 m-2">
-                                    <span v-if="person.gender === 'male'">👨</span>
-                                    <span v-else>👩</span>
+                                <div class="position-absolute top-0 start-0 fs-4 m-2">
+                                    <span v-if="person.gender === 'male'"><i class="fas fa-male"></i></span>
+                                    <span v-else><i class="fas fa-female"></i></span>
                                 </div>
                             </div>
                             <div class="card-body p-1 pb-4">
                                 <div class="position-absolute ss-lb">§</div>
                                 <div class="position-absolute ss-rb">§</div>
-                                <h4 class="fs-4 d-flex justify-content-between">
+                                <h4 class="fs-4 d-flex justify-content-around mb-0">
                                     <span>DEAD</span>
                                     <span>OR</span>
                                     <span>ALIVE</span>
                                 </h4>
-                                <h2 class="name">
+                                <h2 class="name mb-0">
                                     {{ person.name.first.toUpperCase() }} ·
                                     {{ person.name.last.toUpperCase() }}
                                 </h2>
-                                <h3 class="bounty pb-2">₤ {{ person.location.street.number * 100000 }} -</h3>
-                                <div class="row position-absolute bottom-0 align-items-center pb-1">
+                                <h3 class="bounty">₤ {{ toCurrency( person.location.street.number * 100000 ) }} -</h3>
+                                <div class="row position-absolute bottom-0 align-items-center">
                                     <div class="col-8">
                                         <img class="cover" src="./text.png" alt="text">
                                     </div>
@@ -112,18 +123,38 @@
         createApp({
             data(){
                 return{
-                    persons:[]
+                    persons: [],
+                    genderFilter: 'all',
+                }
+            },
+            computed: {
+                // computed 不會改動原始值
+                // watch 類似 methods, 會更動原始值
+                // “不修改原始數值” 的情況產生 “新值” （此值只為了渲染使用）
+
+                // 過濾列表
+                filterPersons() {
+                    switch( this.genderFilter ){
+                        case 'all':
+                            return this.persons;
+                        case this.genderFilter:
+                            return this.persons.filter( item => item.gender === this.genderFilter );
+                    }
                 }
             },
             methods:{
                 getData(){
                 axios
-                    .get('https://randomuser.me/api/?results=8&exc=login')
+                    .get('https://randomuser.me/api/?results=10&exc=login')
                     .then(response => {this.persons = response.data.results
-                    ,console.log(this.persons)
                     })
                     .catch(error => console.log(error));
                 },
+                toCurrency(num) {
+                    const parts = num.toString().split('.');
+                    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    return `${parts.join('.')}`;
+                }
             },
             mounted(){
                 this.getData();

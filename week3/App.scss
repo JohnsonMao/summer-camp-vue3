@@ -9,12 +9,9 @@ $font-family:   'Noto Sans', 'Baloo 2';
 @import './reset';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap');
 @import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
-
+@import '../scss/layout';
 // base
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: $font-family;
     font-size: 16px;
     color: $dark;
@@ -27,6 +24,13 @@ footer {
     justify-content: center;
     align-items: center;
     padding-top: 8px;
+}
+a {
+    text-decoration: none;
+    color: darken( $primary, 40);
+    &:hover {
+        color: darken( $primary, 45);
+    }
 }
 .del {
     color: lighten($dark-gray, 20);
@@ -47,18 +51,10 @@ footer {
 // grid
 .container {
     width: 500px;
+    margin: 16px auto;
 }
 .col {
     flex: 1 0 0%;
-}
-
-// heading
-.h1 {
-    font-size: 48px;
-    font-weight: bold;
-    letter-spacing: 8.75px;
-    text-align: center;
-    vertical-align: middle;
 }
 
 // form

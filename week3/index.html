@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Summer camp Vue3</title>
     <link rel="stylesheet" href="App.css">
     
     <!-- ico -->
@@ -15,12 +15,20 @@
 
 <body>
 <div id="app">
-    <div class="container">
-
-        <!-- todolist title -->
-        <h1 class="h1 d-flex align-items-center justify-content-center py-4">
-            <img class="px-3" src="../tent.png" alt="Summer camp Vue 3"> TODOLIST
+    
+    <header class="activity_title m-0">
+        <h1 class="m-0">
+            <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
+                <img src="../tent.png" alt="summer camp">
+                <span>六角學院 </span>Vue 3 <span>新手</span>夏令營
+            </a>
         </h1>
+        <nav class="nav-custom">
+            <a href="https://johnsonmao.github.io/summer-camp-vue3/"><i class="fas fa-home"></i></a>
+            <a href="https://github.com/JohnsonMao/summer-camp-vue3/tree/main/week3"><i class="fab fa-github"></i></a>
+        </nav>
+    </header>
+    <div class="container">
 
         <!-- todolist header -->
         <div class="input-group bg-white box-shadow rounded-1 overflow-hidden mb-3">
@@ -37,7 +45,7 @@
             </button>
         </div>
 
-        <div class="bg-white box-shadow rounded-1 overflow-hidden">
+        <div class="bg-white box-shadow rounded-1 overflow-hidden mb-3">
 
             <!-- todolist nav -->
             <ul class="btn-group">
@@ -167,11 +175,11 @@
             // 清單目前模式
             switch ( this.filterType ) {
                 case 'undone':
-                return this.todos.filter( item => !item.done);
+                    return this.todos.filter( item => !item.done);
                 case 'done':
-                return this.todos.filter( item => item.done);
+                    return this.todos.filter( item => item.done);
                 default:
-                return this.todos;
+                    return this.todos;
             }
         }
     },

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap");
 @import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -87,9 +89,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 40px;
   font-weight: bold;
 }
@@ -98,6 +100,34 @@ a {
   .activity_title a {
     font-size: 24px;
   }
+  .activity_title a span {
+    display: none;
+  }
+}
+
+.nav-custom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 4px;
+  font-size: 32px;
+}
+
+.nav-custom a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.nav-custom a:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .container-box {

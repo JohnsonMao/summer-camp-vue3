@@ -1,88 +1,105 @@
-# Vue3 practive
+###### tags: `六角學院` `Vue 3 新手夏令營`
 
-## Vue
+# :tent: Vue 3 起步走
 
-### 起手式
+[![week1](https://i.imgur.com/E48VuxQ.jpg)](https://johnsonmao.github.io/summer-camp-vue3/week1/)
+*第一週作業展示，運用了 Vue 指令與 ajax，點擊圖片可察看成果*
+
+## Vue 起手式
+
 [CDN 連結](https://v3.vuejs.org/guide/installation.HTML#vue-devtools)
-語法：`<script src="https://unpkg.com/vue@next"></script>
-`
+語法：`<script src="https://unpkg.com/vue@next"></script>`
 
-- 使用 createApp 建立起始元件
-- 使用 mount 決定 Vue 的應用程式生成位置
+1. 使用 createApp 建立起始元件
 
-請務必記下來，以下三個值，在後續開發會一直出現：
-- 起手式 1：data 資料邏輯
-- 起手式 2：methods 方法
-- 起手式 3：mounted 生命週期
+2. 元件內使用最常用的 3 個值
 
-### 關注點分離
+    - ```js
+      data(){
+          return{} // 資料
+      }
+      ```
 
-![](https://i.imgur.com/zMu6v5x.png)
+    - ```js
+      methods: {} // 方法
+      ```
 
+    - ```js
+      mounted(){} // 初始化
+      ```
 
-<table>
-  <tr>
-    <td bgcolor=#f88>
-    <font color=#fff>重要觀念：先定義資料 ( data )，才能在 HTML 中使用</font>
-    </td>
-  </tr>
-<table>
+3. 使用 mount 決定 Vue 的應用程式生成位置
 
+## 關注點分離
 
-範例程式碼：
-```HTML
-<!-- 這裡是 HTML -->
-<div id="app">
-    {{ text }}
-</div>
-```
+> ![Separation of concerns](https://i.imgur.com/zMu6v5x.png)
+> [name=卡斯伯]
 
-```JS
-// 這裡是 Vue
-Vue.createApp({
-  // data 函式
-  data: function() {
-    // 一定是用 return
-    return {
-      text: '卡斯伯好帥',
-      name: '小明',
-      num: 0
-    }
-  },
-  // methods 方法
-  methods: {
-  
-  },
-  // mounted 生命週期，初始化
-  mounted: function() {
-  
-  },
-}).mount('#app');
-```
+==重要觀念==：先定義資料 ( data )，才能在 HTML 中使用
 
-Q：如何在 HTML 中讀取 Vue data？
-A：將 data 的資料掛在到 HTML 元素中，使用 `{{}}`方法，將 data 資料包在裡面。
+HTML 要讀取 data 資料有以下幾種方法
 
+1. 直接用雙大括號`{{}}`包住要讀取的資料
 
-### 指令
+    ```HTML
+    <!-- 這裡是 HTML -->
+    <div id="app">
+        {{ title }}
+    </div>
+    ```
 
-#### v-model
+    ```JS
+    // Vue 起手式
+    Vue.createApp({
+      // data 資料
+      data() {
+        // 一定要用 return
+        return {
+          title: '六角學院 Vue 3 夏令營',
+          text: '六角學院佛心來的'
+        }
+      },
+      // methods 方法
+      methods: {},
+      // mounted 生命週期，初始化
+      mounted() {},
+    }).mount('#app'); // 渲染到 HTML 的 app
+    ```
 
-- 和 HTML <font color=#e33>雙向</font>綁定 data 資料（會同步兩邊資料）
+2. 使用`v-text`or`v-model`直接傳入資料 ( JS 同上)
+
+    ```HTML
+    <!-- 這裡是 HTML -->
+    <div id="app">
+        <h1 v-text="title"></h1>
+        <input v-model="text">
+    </div>
+    ```
+
+## 指令
+
+### v-model
+
+- 和 HTML **雙向**綁定 data 資料（會同步兩邊資料）
+
   ```HTML
   <input type="number" v-model="num">
   ```
-#### v-bind
+
+### v-bind
 
 - 在 HTML 標籤上進行屬性綁定
-  - 省略語法：直接在屬性前加上 `:` 省略 `v-bind`
+  - ==省略語法==：直接在屬性前加上 `:` 省略 `v-bind`
+
   ```HTML
-  <img v-bind:src="person.image" :alt="person.name" width="100">
+  <img :src="person.image" :alt="person.name" width="100">
   ```
-#### v-if
+
+### v-if ( 需與下面的 v-else 搭配 )
 
 - 將判斷式寫入 `""` 或 `''` 中，若是 true 則會顯示，false 則不會顯示
-#### v-else
+
+### v-else
 
 - 不用加判斷式，但需要搭配 v-if 一起使用（若要還需要判斷，則使用 v-else-if）
 
@@ -94,13 +111,14 @@ A：將 data 的資料掛在到 HTML 元素中，使用 `{{}}`方法，將 data 
   <i v-else></i>
   ```
 
-#### v-for
+### v-for
 
 - 多筆資料透過迴圈方式將資料迭代出來
 
   - people 是 data 中的陣列
   - item 代表 people 中，每一個獨立的物件， item 可自定義名稱
-  - v-for 必須帶 key(下週會說明)
+  - v-for 必須帶 key
+
   ```HTML
   <ul>
     <li v-for="item in people">
@@ -108,112 +126,86 @@ A：將 data 的資料掛在到 HTML 元素中，使用 `{{}}`方法，將 data 
       <button type="button">增加</button>
       <img :src="item.image" :alt="item.name">
       <i v-if="item.gender === 'male'"
-          class="bi bi-gender-male"
-      ></i>
-      >
+          class="bi bi-gender-male"></i>
       <i v-else
-          class="bi bi-gender-male"
-      ></i>
-      {{ item.cash }}
+          class="bi bi-gender-male"></i>
+      {{ item.name }}
     </li>
   </ul>
   ```
-  
 
   示意圖：
-  - ![](https://i.imgur.com/EHNwlax.png)
+    > ![v-for](https://i.imgur.com/EHNwlax.png)
+    > [name=卡斯伯]
 
-#### @click
-  - 在 DOM 元素上加入監聽事件，下方示範 vue 監聽事件以及 jQuery 監聽事件差異
-  ```JS
-  // 這是 jQuery 的寫法
-  $(`#button`).on('click', function(){
+### @click
 
-  });
-  ```
-  ```HTML
-  <!--  這是 Vue 在 HTML 上綁定事件的做法  -->
-  <button type="button" @click="item.cash++">
-    增加
-  </button>
-  ```
-#### methods 方法
-  ```javascript
-  // 這是 Vue 透過 methods 給函式
-  methods: {
+- 在 DOM 元素上加入監聽事件，下方示範 vue 監聽事件以及 jQuery 監聽事件差異
+
+    ```JQuery
+    // 這是 jQuery 的寫法
+    $(`#button`).on('click', function(){
+
+    });
+    ```
+    ```HTML
+    <!--  這是 Vue 在 HTML 上綁定事件的做法  -->
+    <button type="button" @click="item.cash++">
+      增加
+    </button>
+    ```
+
+### methods 方法
+
+```JS
+// 這是 Vue 透過 methods 給函式
+methods: {
     clickAlert() { // 建議可以縮寫就縮寫（提升程式碼閱讀性）
-      alert('我被觸發了');
-    },
-  }
-  ```
-#### mounted 生命週期，初始化
-  - 使用 this 方式取 data 的值
-  ```JS
-  mounted: funtcion() {
-    console.log(this.text);
-    // this.clickAlert();
-    console.log(this.name);
-    
-    // this 本身是個很複雜的知識，但在 Vue 中把它簡單化了。    
-    console.log(this.person.image);
-    // 修改資料範例    
-    this.text = '我叫小賀'
-    // Ajax 取的的資料放在這邊
-  }
-  ```
-  - 網頁載入後只會執行一次，適合做初始化
-
-
-#### 延伸知識
-
-- 範例
-```HTMLembedded=
-<div id="app">
-  {{ text }}
-</div>
-```
-```javascript=
-Vue.createApp({
-  data() {
-    return {
-      text: '我叫卡斯伯'
+        alert('我被觸發了');
     }
-  },
-  methods: {
-
-  },
-  mounted() {
-
-  }
-}).mount('#app')
+}
 ```
 
+### mounted 生命週期，初始化
 
-![](https://i.imgur.com/pzMahpd.png)
+- 使用 this 方式取 data 的值
 
-一般：
+    ```JS
+    mounted() {
+      // this 本身是個很複雜的知識，但在 Vue 中把它簡單化了。    
+      console.log(this.title);
+      // 修改資料範例    
+      this.text = '我叫小賀'
+      // Ajax 取的的資料放在這邊初始化渲染
+    }
+    ```
+
+- 網頁載入後只會執行一次，適合做初始化
+
+#### ==延伸知識==
+
+> ![ESM](https://i.imgur.com/pzMahpd.png)
+> [name=卡斯伯]
+
+我們今天所學的：
+
 - 整包載入
 
-ESModule： vuecli也是使用 ESM
+業界推薦使用的 ESModule： Vue-cli也是使用 ESM :+1:
+
 - 單一模組
 - 是分別獨立的一個一個方法，ex：createApp、ref、reactive
 
 > 擇一使用，不會同時使用兩種載入方法，建議使用 ESModule 的載入方法。
-> <font size=2>——　卡斯伯</font>
+> [name=卡斯伯]
 
   ```HTML
   <script type="module">
   imoport { createApp } from 'url';
+
   </script>
   ```
-  
 
-  
-<table>
-  <tr>
-    <td bgcolor=#f88>
-    <font color=#fff>ESM 如果沒有加 type = "module" 使用 import / export 會報錯</font>
-    </td>
-  </tr>
-<table>
+==ESM 如果沒有加 type = "module" 使用 import / export 會報錯==
 
+{%hackmd @JohnsonMao/theme-Wood-Fired %}

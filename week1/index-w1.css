@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Style+Script&display=swap");
 @import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 .activity_title {
@@ -15,9 +17,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 40px;
   font-weight: bold;
 }
@@ -26,6 +28,34 @@
   .activity_title a {
     font-size: 24px;
   }
+  .activity_title a span {
+    display: none;
+  }
+}
+
+.nav-custom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 4px;
+  font-size: 32px;
+}
+
+.nav-custom a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.nav-custom a:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .container-box {
@@ -84,6 +114,11 @@ img {
      object-fit: cover;
 }
 
+.container-box {
+  height: 73vh;
+  overflow-y: auto;
+}
+
 .nav {
   padding: 8px;
   background: rgba(85, 58, 39, 0.8);
@@ -97,6 +132,14 @@ img {
 
 .nav .btn:hover {
   color: #c69e82;
+}
+
+.fa-male {
+  color: #99f;
+}
+
+.fa-female {
+  color: #f99;
 }
 
 .btn-aim {
@@ -134,6 +177,7 @@ img {
 
 .name {
   font-size: 42px;
+  margin-top: -8px;
   margin-left: -115px;
   margin-right: -115px;
   text-align: center;
@@ -145,10 +189,11 @@ img {
   font-size: 24px;
   text-align: center;
   font-family: "Style script";
+  margin-bottom: -8px;
 }
 
 .ss-lb {
-  bottom: 10px;
+  bottom: -30px;
   left: 0;
   font-size: 150px;
   margin-left: -47px;
@@ -157,7 +202,7 @@ img {
 }
 
 .ss-rb {
-  bottom: 50px;
+  bottom: 10px;
   right: 0;
   font-size: 100px;
   margin-right: -30px;
@@ -169,6 +214,7 @@ img {
   font-size: 24px;
   margin-left: -35px;
   margin-right: -35px;
+  margin-bottom: 0;
   text-align: start;
   -webkit-transform: rotate3d(0, 1, 0, 45deg);
           transform: rotate3d(0, 1, 0, 45deg);

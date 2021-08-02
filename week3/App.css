@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap");
 @import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Baloo+2&display=swap");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -55,16 +57,89 @@ table {
   border-spacing: 0;
 }
 
-body {
+.activity_title {
+  padding: 4px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.activity_title a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .activity_title a {
+    font-size: 24px;
+  }
+  .activity_title a span {
+    display: none;
+  }
+}
+
+.nav-custom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 4px;
+  font-size: 32px;
+}
+
+.nav-custom a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.nav-custom a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.container-box {
+  height: 81.5vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  padding: 8px;
+}
+
+body {
   font-family: "Noto Sans", "Baloo 2";
   font-size: 16px;
   color: #333;
@@ -89,6 +164,15 @@ footer {
   padding-top: 8px;
 }
 
+a {
+  text-decoration: none;
+  color: #a37100;
+}
+
+a:hover {
+  color: #8a5f00;
+}
+
 .del {
   color: #cfccc7;
   text-decoration: line-through;
@@ -110,20 +194,13 @@ footer {
 
 .container {
   width: 500px;
+  margin: 16px auto;
 }
 
 .col {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 0%;
           flex: 1 0 0%;
-}
-
-.h1 {
-  font-size: 48px;
-  font-weight: bold;
-  letter-spacing: 8.75px;
-  text-align: center;
-  vertical-align: middle;
 }
 
 .input-group {

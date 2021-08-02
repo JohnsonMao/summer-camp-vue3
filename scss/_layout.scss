@@ -1,3 +1,4 @@
+@import './variable';
 .activity_title {
     padding: 4px;
     display: flex;
@@ -5,11 +6,30 @@
     background: rgba( white, .2);
     a {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         font-size: 40px;
         font-weight: bold;
         @media ( max-width: 768px ){
             font-size: 24px;
+            span {
+                display: none;
+            }
+        }
+    }
+}
+.nav-custom {
+    display: flex;
+    margin-left: 4px;
+    font-size: 32px;
+    a {
+        display: flex;
+        align-items: center;
+        padding-left: 8px;
+        padding-right: 8px;
+        transition: all .2s;
+
+        &:hover {
+            background: rgba( #fff, .2);
         }
     }
 }

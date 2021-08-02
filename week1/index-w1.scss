@@ -1,3 +1,5 @@
+@import '../scss/layout';
+
 $card-bg:   #d8c19f;
 $primary:   #553a27;
 
@@ -7,7 +9,6 @@ $num: 'Style script';
 
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Style+Script&display=swap');
 @import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
-@import '../scss/layout';
 
 body {
     font-family: $font-family;
@@ -45,6 +46,10 @@ img {
     display: block;
     object-fit: cover;
 }
+.container-box {
+    height: 73vh;
+    overflow-y: auto;
+}
 .nav {
     padding: 8px;
     background: rgba( $primary, .8 );
@@ -57,6 +62,12 @@ img {
             color: lighten( $primary, 40 );
         }
     }
+}
+.fa-male {
+    color: #99f;
+}
+.fa-female {
+    color: #f99;
 }
 .btn-aim {
     padding: 0;
@@ -98,6 +109,7 @@ img {
 }
 .name {
     font-size: 42px;
+    margin-top: -8px;
     margin-left: -115px;
     margin-right: -115px;
     text-align: center;
@@ -107,16 +119,17 @@ img {
     font-size: 24px;
     text-align: center;
     font-family: $num;
+    margin-bottom: -8px;
 }
 .ss-lb {
-    bottom: 10px;
+    bottom: -30px;
     left: 0;
     font-size: 150px;
     margin-left: -47px;
     transform: rotate3d( 0, 1, 0, 85deg);
 }
 .ss-rb {
-    bottom: 50px;
+    bottom: 10px;
     right: 0;
     font-size: 100px;
     margin-right: -30px;
@@ -126,6 +139,7 @@ img {
     font-size: 24px;
     margin-left: -35px;
     margin-right: -35px;
+    margin-bottom: 0;
     text-align: start;
     transform: rotate3d( 0, 1, 0, 45deg);
 }
