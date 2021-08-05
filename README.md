@@ -1,4 +1,4 @@
-# :tent: Summer camp Vue 3
+# ⛺ Summer camp Vue 3
 
 ###### tags: `六腳學院` `Vue 3` `Freepik`
 ## [六角學院 Vue 3 新手夏令營](https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/)

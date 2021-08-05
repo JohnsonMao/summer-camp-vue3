@@ -1,0 +1,145 @@
+@import '../scss/layout';
+
+$card-bg:   #d8c19f;
+$primary:   #553a27;
+
+$font-family: 'Abril fatface';
+$num: 'Style script';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Style+Script&display=swap');
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
+body {
+    font-family: $font-family;
+    color: $primary;
+    background: no-repeat url('./wood.jpg');
+    background-size: cover;
+}
+a {
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+        color: darken( $primary, 5);
+        
+        .btn-aim {
+            background: gold;
+        }
+        .card {
+            background: linear-gradient( 89deg, darken( $card-bg, 0) 0%,
+                                                darken( $card-bg, 5) 8%,
+                                                darken( $card-bg, 4) 16%,
+                                                darken( $card-bg, 0) 24%,
+                                                darken( $card-bg, 5) 32%,
+                                                darken( $card-bg, 6) 40%,
+                                                darken( $card-bg, 0) 58%,
+                                                darken( $card-bg, 6) 66%,
+                                                darken( $card-bg, 5) 74%,
+                                                darken( $card-bg, 0) 82%,
+                                                darken( $card-bg, 6) 90%,
+                                                darken( $card-bg, 5) 100%,);   
+        }
+    }
+}
+img {
+    display: block;
+    object-fit: cover;
+}
+.container-box {
+    height: 73vh;
+    overflow-y: auto;
+}
+.nav {
+    padding: 8px;
+    background: rgba( $primary, .8 );
+    .btn {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+
+        &:hover {
+            color: lighten( $primary, 40 );
+        }
+    }
+}
+.fa-male {
+    color: #99f;
+}
+.fa-female {
+    color: #f99;
+}
+.btn-aim {
+    padding: 0;
+    line-height: 1;
+    background: lightyellow;
+    border: 1px solid $primary;
+    border-radius: 50%;
+}
+.btn-aim-focus {
+    padding: 0;
+    line-height: 1;
+    background: red;
+    border: 1px solid $primary;
+    border-radius: 50%;
+}
+.cover {
+    width: 100%;
+}
+.card {
+    background: linear-gradient( 89deg, darken( $card-bg, 0) 0%,
+                                        darken( $card-bg, 10) 8%,
+                                        darken( $card-bg, 9) 16%,
+                                        darken( $card-bg, 0) 24%,
+                                        darken( $card-bg, 10) 32%,
+                                        darken( $card-bg, 11) 40%,
+                                        darken( $card-bg, 0) 58%,
+                                        darken( $card-bg, 11) 66%,
+                                        darken( $card-bg, 10) 74%,
+                                        darken( $card-bg, 0) 82%,
+                                        darken( $card-bg, 11) 90%,
+                                        darken( $card-bg, 10) 100%,);
+}
+.title {
+    font-size: 65px;
+    margin-left: -45px;
+    margin-right: -45px;
+    text-align: center;
+    transform: rotate3d( 0, 1, 0, 45deg);
+}
+.name {
+    font-size: 42px;
+    margin-top: -8px;
+    margin-left: -115px;
+    margin-right: -115px;
+    text-align: center;
+    transform: rotate3d( 0, 1, 0, 60deg);
+}
+.bounty {
+    font-size: 24px;
+    text-align: center;
+    font-family: $num;
+    margin-bottom: -8px;
+}
+.ss-lb {
+    bottom: -30px;
+    left: 0;
+    font-size: 150px;
+    margin-left: -47px;
+    transform: rotate3d( 0, 1, 0, 85deg);
+}
+.ss-rb {
+    bottom: 10px;
+    right: 0;
+    font-size: 100px;
+    margin-right: -30px;
+    transform: rotate3d( 0, 1, 0, 85deg);
+}
+.marine {
+    font-size: 24px;
+    margin-left: -35px;
+    margin-right: -35px;
+    margin-bottom: 0;
+    text-align: start;
+    transform: rotate3d( 0, 1, 0, 45deg);
+}

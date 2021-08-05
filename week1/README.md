@@ -1,9 +1,16 @@
 ###### tags: `六角學院` `Vue 3 新手夏令營`
 
-# :tent: Vue 3 起步走
+# ⛺ Vue 3 起步走
 
 [![week1](https://i.imgur.com/E48VuxQ.jpg)](https://johnsonmao.github.io/summer-camp-vue3/week1/)
-*第一週作業展示，運用了 Vue 指令與 ajax，點擊圖片可察看成果*
+*第一週作業展示，運用了 Vue 指令與 Ajax，點擊圖片可察看成果*
+
+## 課堂重點
+
+- 初學 Vue 起手式常用的三個值 `data` `methods` `mounted`
+- 關注點分離，避免大雜燴
+- Vue 常用指令，詳情請往下閱讀
+- ESModule 使用
 
 ## Vue 起手式
 
@@ -207,5 +214,10 @@ methods: {
   ```
 
 ==ESM 如果沒有加 type = "module" 使用 import / export 會報錯==
+
+### 參考資料
+
+- [第一堂 - 共筆文件](https://hackmd.io/@dbFY0UD9SUeKmNXhWf01ew/BkJoW-hn_/%2FBF-LiS7iQvebt7XMn_ruzg)
+- [六角學院 Vue 3 夏令營](https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/)
 
 {%hackmd @JohnsonMao/theme-Wood-Fired %}

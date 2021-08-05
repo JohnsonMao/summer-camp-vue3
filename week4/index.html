@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer camp Vue3</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="todolist.css">
+    
+    <!-- ico -->
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<div id="app">
+    
+    <header class="activity_title m-0">
+        <h1 class="m-0">
+            <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
+                <img src="../tent.png" alt="summer camp">
+                <span>六角學院 </span>Vue 3 <span>新手</span>夏令營
+            </a>
+        </h1>
+        <nav class="nav-custom">
+            <a href="https://johnsonmao.github.io/summer-camp-vue3/"><i class="fas fa-home"></i></a>
+            <a href="https://github.com/JohnsonMao/summer-camp-vue3/tree/main/week3"><i class="fab fa-github"></i></a>
+        </nav>
+    </header>
+    <div class="container">
+
+        <!-- todolist header -->
+        <div class="input-group bg-white box-shadow rounded-1 overflow-hidden mb-3">
+            <!-- add todo -->
+            <input type="text" 
+                class="form-control flex-fill" 
+                @keyup.enter="addTodo"
+                v-model="newTodo"
+                placeholder="新增代辦事項"/>
+            <button type="button" 
+                class="btn btn-size-lg btn-dark rounded-1 m-1"
+                @click="addTodo">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="bg-gradual-white box-shadow rounded-1 overflow-hidden mb-3">
+
+            <!-- todolist nav -->
+            <ul class="btn-group">
+                <!-- filter todo -->
+                <li :class=" filterType === 'all' ? 
+                'active col' : 'col-auto' ">
+                    <button class="btn" 
+                    @click.prevent="filterType = 'all'">全部</button>
+                </li>
+                <li :class=" filterType === 'undone' ? 
+                'active col' : 'col-auto' ">
+                    <button class="btn" 
+                    @click.prevent="filterType = 'undone'">待完成</button>
+                </li>
+                <li :class=" filterType === 'done' ? 
+                'active col' : 'col-auto' ">
+                    <button class="btn" 
+                    @click.prevent="filterType = 'done'">已完成</button>
+                </li>
+            </ul>
+
+            <!-- todolist list -->
+            <div class="list-frame vh-50">
+                <ul class="list-group">
+                    <div>
+                        <!-- todolist todo -->
+                        <li v-for="todo in filterTodos"
+                            :key="todo.id"
+                            class="input-group">
+                            <!-- edit todo -->
+                            <input v-if="cacheId === todo.id"
+                                @keyup.enter="doneEdit( todo )"
+                                @keyup.esc="cancelEdit"
+                                v-model="cacheName" 
+                                class="form-edit flex-fill" 
+                                type="text" />
+                            <!-- toggle todo -->
+                            <div v-else class="input-group">
+                                <input type="checkbox" 
+                                    :id="todo.id"
+                                    @click="toggleDone( todo.id, todo.done )"
+                                    :checked=" todo.done "
+                                    class="form-check m-4"/>
+                                <label :for="todo.id"
+                                    v-text="todo.name"
+                                    @dblclick="editTodo( todo.id, todo.name )"
+                                    :class="todo.done ? 'del' : ''"
+                                    class="flex-fill lh-1 py-4 ms-1">
+                                </label>
+                            </div>
+                            <!-- delete todo -->
+                            <button type="button" 
+                                @click="deleteTodo( todo )"
+                                class="btn btn-size-base list-btn-warning m-3"
+                                aria-label="Close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+
+            <!-- todolist footer -->
+            <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex align-items-center">
+                    <!-- toggle all todo -->
+                    <input type="checkbox"
+                        @click="toggleAllTodo"
+                        :checked="checkAllTodo = 
+                        ( doneCount === total && total !== 0 ) ? true : false" 
+                        class="form-check m-4"/>
+                    <!-- todos scoreboard -->
+                    <h3 class="text-dark-gray">
+                        已完成 <span v-text="doneCount"></span> / 
+                        全部 <span v-text="total"></span>
+                    </h3>
+                </div>
+                <!-- clear all done todo -->
+                <button type="button"
+                    @click="clearAllDone"
+                    class="btn btn-text-warning m-4 me-8">清除已完成項目
+                </button>
+            </div>
+
+        </div>
+        <footer>
+            <!-- UI 設計來自於 六角學院 -->
+            <div class="text-primary">UI design from 
+                <a href="https://www.hexschool.com/" title="Freepik">Hexschool</a>
+            </div>
+            <!-- Icon 來自於 Freepik -->
+            <div class="text-primary">Icons made by 
+                <a href="https://www.freepik.com" title="Freepik">Freepik</a> from 
+                <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+            </div>
+        </footer>
+    </div>
+</div>
+<script type="module" src="./todolist.js"></script>
+</body>
+</html>
