@@ -47,7 +47,7 @@
             </button>
         </div>
 
-        <div class="bg-gradual-white box-shadow rounded-1 overflow-hidden mb-3">
+        <div class="bg-gradual-white box-shadow rounded-1 overflow-hidden mb-3" v-cloak>
 
             <!-- todolist nav -->
             <ul class="btn-group">
@@ -78,22 +78,22 @@
                             :key="todo.id"
                             class="input-group">
                             <!-- edit todo -->
-                            <input v-if="cacheId === todo.id"
+                            <input v-if="cacheTodo === todo"
                                 @keyup.enter="doneEdit( todo )"
                                 @keyup.esc="cancelEdit"
-                                v-model="cacheName" 
+                                @blur="doneEdit( todo )"
+                                v-model="cacheTodo.name" 
                                 class="form-edit flex-fill" 
                                 type="text" />
                             <!-- toggle todo -->
                             <div v-else class="input-group">
                                 <input type="checkbox" 
                                     :id="todo.id"
-                                    @click="toggleDone( todo.id, todo.done )"
-                                    :checked=" todo.done "
+                                    v-model=" todo.done "
                                     class="form-check m-4"/>
                                 <label :for="todo.id"
                                     v-text="todo.name"
-                                    @dblclick="editTodo( todo.id, todo.name )"
+                                    @dblclick="editTodo( todo )"
                                     :class="todo.done ? 'del' : ''"
                                     class="flex-fill lh-1 py-4 ms-1">
                                 </label>
@@ -115,9 +115,8 @@
                 <div class="d-flex align-items-center">
                     <!-- toggle all todo -->
                     <input type="checkbox"
-                        @click="toggleAllTodo"
-                        :checked="checkAllTodo = 
-                        ( doneCount === total && total !== 0 ) ? true : false" 
+                        @click="toggleAllTodo" 
+                        :checked="doneCount === total && total !== 0" 
                         class="form-check m-4"/>
                     <!-- todos scoreboard -->
                     <h3 class="text-dark-gray">

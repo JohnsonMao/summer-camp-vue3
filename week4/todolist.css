@@ -196,6 +196,10 @@ a:hover {
   color: #bd8300;
 }
 
+[v-cloak] {
+  opacity: 0;
+}
+
 .container {
   max-width: 500px;
   margin: 16px auto;
@@ -295,6 +299,11 @@ a:hover {
   overflow-y: auto;
 }
 
+.list-group li label {
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
 .list-group li .list-btn-warning {
   color: transparent;
 }
@@ -336,12 +345,12 @@ a:hover {
 }
 
 .btn-size-base {
-  padding: 6px 8.5px;
+  padding: 6px 8px;
 }
 
 .btn-size-base i {
-  -webkit-transform: translateY(1.5px);
-          transform: translateY(1.5px);
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
 }
 
 .btn-size-lg {
@@ -395,7 +404,7 @@ a:hover {
   text-align: center;
   vertical-align: middle;
   border: 2px solid #d6d6d6;
-  border-bottom: 0px;
+  border-bottom: 2px solid transparent;
   border-radius: 10px 10px 0 0;
   -webkit-transition: all .3s;
   transition: all .3s;

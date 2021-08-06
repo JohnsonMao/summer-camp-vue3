@@ -47,6 +47,9 @@ a {
         color: darken( $primary, 35);
     }
 }
+[v-cloak]{
+    opacity: 0;
+}
 
 // grid
 .container {
@@ -133,6 +136,10 @@ a {
     overflow-y: auto;
 
     li {
+        label {
+            transition: .3s;
+        }
+
         .list-btn-warning {
             color: transparent;
         }
@@ -175,9 +182,9 @@ a {
     transition: .2s;
 }
 .btn-size-base {
-    padding: 6px 8.5px;
+    padding: 6px 8px;
     i {
-        transform: translateY(1.5px);
+        transform: translateY(1px);
     }
 }
 .btn-size-lg {
@@ -226,7 +233,7 @@ a {
         text-align: center;
         vertical-align: middle;
         border: 2px solid darken( $light-gray, 10);
-        border-bottom: 0px;
+        border-bottom: 2px solid transparent;
         border-radius: 10px 10px 0 0;
         transition: all .3s;
 

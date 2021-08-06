@@ -1,4 +1,4 @@
-import { createApp, ref, computed } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.1.4/vue.esm-browser.min.js'
+import { createApp, ref, computed, onMounted, watch } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.1.4/vue.esm-browser.min.js'
 
 const STORAGE_KEY = 'todos_history';
 
@@ -8,7 +8,7 @@ const todoStorage = {
         return todos;
     },
     save( todos ) {
-        localStorage.setItem( STORAGE_KEY, JSON.stringify(todos) );
+        localStorage.setItem( STORAGE_KEY, JSON.stringify( todos ) );
     }
 };
 
@@ -22,10 +22,7 @@ const App = createApp({
     setup() {
 
         // 顯示畫面
-        const todos = ref([
-            { id:0, name:'test', done:false },
-            { id:1, name:'test', done:true },
-        ]);
+        const todos = ref([]);
         const filterType = ref('all');
         const filterTodos = computed(() => filters[ filterType.value ]( todos.value ));
         const total = computed(() => todos.value.length);
@@ -41,21 +38,69 @@ const App = createApp({
                 name: value,
                 done: false,
             }
-            todos.value.push( todoObj );
+            todos.value = [ todoObj,...todos.value ];
             newTodo.value = '';
         }
 
         // 刪除 todo
-        const deleteTodo = ( todo ) => {
-            const index = todos.value.indexOf( todo );
-            todos.value.splice( index, 1);
+        const deleteTodo = todo => {
+            if( window.confirm('確定刪除嗎？') ) {
+                const index = todos.value.indexOf( todo );
+                todos.value.splice( index, 1);
+            } else {
+                cancelEdit( todo );
+            }
         }
 
-        
+        // 編輯 todo
+        const cacheTodo = ref( null );
+        let beforeName = null;
+        const editTodo = todo => {
+            cacheTodo.value = todo;
+            beforeName = todo.name;
+        }
+        // 完成編輯
+        const doneEdit = todo => {
+            if( !todo.name.trim() ) {
+                deleteTodo( todo )
+            }
+            cacheTodo.value = null;
+        }
+
+        // 取消編輯
+        const cancelEdit = todo => {
+            todo.name = beforeName;
+            cacheTodo.value = null;
+        }
+
+        // 調整所有 todo
+        const toggleAllTodo = () => {
+            const checkAllTodo = doneCount.value === total.value;
+            todos.value.forEach( todo => todo.done = !checkAllTodo );
+        }
+
+        // 清除完成 todo
+        const clearAllDone = () => {
+            if ( window.confirm('你確定要刪除已完成的任務？')) {
+                todos.value = filters.undone( todos.value );
+                filterType.value = 'all';
+            }
+        }
+
+        onMounted(() => todos.value = todoStorage.fetch());
+        watch(
+            todos,
+            () => {
+                todoStorage.save( todos.value );
+            },{
+                deep: true
+            }
+        );
         return {
             // data
             filterType,
             newTodo,
+            cacheTodo,
 
             // computed
             filterTodos,
@@ -65,6 +110,11 @@ const App = createApp({
             // methods
             addTodo,
             deleteTodo,
+            editTodo,
+            doneEdit,
+            cancelEdit,
+            toggleAllTodo,
+            clearAllDone,
         }
     }
 });
