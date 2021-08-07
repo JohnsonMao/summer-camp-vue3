@@ -35,7 +35,7 @@ const App = createApp({
     const newTodo = ref("");
     const addTodo = () => {
       const { value } = newTodo;
-      if (!value.trim) return;
+      if (!value.trim()) return;
       const todoObj = {
         id: Date.now(),
         name: value,
@@ -49,8 +49,6 @@ const App = createApp({
       if (window.confirm("確定刪除嗎？")) {
         const index = todos.value.indexOf(todo);
         todos.value.splice(index, 1);
-      } else {
-        cancelEdit(todo);
       }
     };
 
@@ -61,13 +59,13 @@ const App = createApp({
       beforeName = todo.name;
     };
 
-    const doneEdit = (todo) => {
-      if (!todo.name.trim()) deleteTodo(todo);
+    const cancelEdit = (todo) => {
+      todo.name = beforeName;
       cacheTodo.value = null;
     };
 
-    const cancelEdit = (todo) => {
-      todo.name = beforeName;
+    const doneEdit = (todo) => {
+      if (!todo.name.trim()) return cancelEdit;
       cacheTodo.value = null;
     };
 
@@ -82,7 +80,6 @@ const App = createApp({
         filterType.value = "all";
       }
     };
-
     onMounted(() => (todos.value = todoStorage.fetch()));
     watch(
       todos,
@@ -103,8 +100,8 @@ const App = createApp({
       doneCount,
 
       addTodo,
-      deleteTodo,
       editTodo,
+      deleteTodo,
       doneEdit,
       cancelEdit,
       toggleAllTodo,
@@ -112,4 +109,5 @@ const App = createApp({
     };
   },
 });
+
 App.mount("#app");
