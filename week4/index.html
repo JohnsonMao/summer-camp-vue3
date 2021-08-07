@@ -73,8 +73,12 @@
             <div class="list-frame vh-50">
                 <ul class="list-group">
                     <div>
+                        <li v-if="total === 0">
+                            <h3 class="text-center m-4">趕快添加新任務吧</h3>
+                        </li>
                         <!-- todolist todo -->
                         <li v-for="todo in filterTodos"
+                            v-else
                             :key="todo.id"
                             class="input-group">
                             <!-- edit todo -->

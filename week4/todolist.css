@@ -188,6 +188,10 @@ a:hover {
   line-height: 1;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .text-primary {
   color: #f0a600;
 }
