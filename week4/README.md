@@ -1,10 +1,28 @@
+---
+title: Vue 3 Composition API
+tags: 六角學院, Vue 3 新手夏令營
+date: 2021/8/4
+---
+
 ###### tags: `六角學院` `Vue 3 新手夏令營`
+
+<<<<<<< HEAD
+# ⛺ Vue 3 Composition API
+
+{%youtube 0LtUwttO0n4 %}
+*Kata 練習*
+
+=======
+###### *date: 2021/8/4*
+
+[![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2F4qy1obfUQIC0RTk4j-QT8g)
 
 # ⛺ Vue 3 Composition API
 
 {%youtube 0LtUwttO0n4 %}
 *Kata 練習*
 
+>>>>>>> e1721710af63dd0ea2df455f824fe6c7c97c69cf
 [![week4](https://i.imgur.com/kGU8CAX.png)
 ](https://johnsonmao.github.io/summer-camp-vue3/week4/)
 *第四週作業展示，運用了 Vue Composition API 與 watch 功能，點擊圖片可察看成果*

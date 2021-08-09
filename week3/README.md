@@ -1,4 +1,14 @@
+---
+title: Vue 3 Options API
+tags: 六角學院, Vue 3 新手夏令營
+date: 2021/8/2
+---
+
 ###### tags: `六角學院` `Vue 3 新手夏令營`
+
+###### *date: 2021/8/2*
+
+[![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2F43MocAe-Q4Su4656xIow1g)
 
 # ⛺ Vue 3 Options API
 

@@ -1,9 +1,21 @@
+---
+title: Vue 3 與指令
+tags: 六角學院, Vue 3 新手夏令營
+date: 2021/8/2
+---
+
 ###### tags: `六角學院` `Vue 3 新手夏令營`
+
+###### *date: 2021/8/2*
+
+[![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2FSLONN50fSdqVPt7D5gOf7A)
 
 # ⛺ Vue 3 與指令
 
 [![week2](https://i.imgur.com/Xd2g377.png)](https://johnsonmao.github.io/summer-camp-vue3/week2/)
-*第二週作業展示，運用了 Vue 進階指令與 localStrage，點擊圖片可察看成果*
+*第二週作業展示，運用了 Vue 進階指令與 localStrage，同時也自我挑戰運用了鍵盤監聽，只使用鍵盤就能操控計算機功能，點擊圖片可察看成果*
+
+[TOC]
 
 [TOC]
 

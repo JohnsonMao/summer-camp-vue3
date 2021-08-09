@@ -1,4 +1,14 @@
+---
+title: Vue 3 起步走
+tags: 六角學院, Vue 3 新手夏令營
+date: 2021/7/28
+---
+
 ###### tags: `六角學院` `Vue 3 新手夏令營`
+
+###### *date: 2021/7/28*
+
+[![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2FO8xSWPUHR1KoxiDBXiN15g)
 
 # ⛺ Vue 3 起步走
 
@@ -215,7 +225,7 @@ methods: {
   </script>
   ```
 
-==ESM 如果沒有加 type = "module" 使用 import / export 會報錯==
+==注意==：ESM 如果沒有加 type = "module" 使用 import / export 會報錯
 
 ### 參考資料
 
