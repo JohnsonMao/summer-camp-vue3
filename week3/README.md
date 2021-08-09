@@ -1,9 +1,21 @@
+---
+title: Vue 3 Options API
+tags: 六角學院, Vue 3 新手夏令營
+date: 2021/8/2
+---
+
 ###### tags: `六角學院` `Vue 3 新手夏令營`
+
+###### *date: 2021/8/2*
+
+[![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2F43MocAe-Q4Su4656xIow1g)
 
 # ⛺ Vue 3 Options API
 
 [![week3](https://i.imgur.com/s0FUJXG.png)](https://johnsonmao.github.io/summer-camp-vue3/week3/)
 *第三週作業展示，運用了 Vue computed 與完整的 CRUD 功能，點擊圖片可察看成果*
+
+[TOC]
 
 ## 課堂重點
 
