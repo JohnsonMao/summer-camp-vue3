@@ -5,6 +5,8 @@
 [![week3](https://i.imgur.com/s0FUJXG.png)](https://johnsonmao.github.io/summer-camp-vue3/week3/)
 *第三週作業展示，運用了 Vue computed 與完整的 CRUD 功能，點擊圖片可察看成果*
 
+[TOC]
+
 ## 課堂重點
 
 - 了解 methods 與 computed 的差別與運用

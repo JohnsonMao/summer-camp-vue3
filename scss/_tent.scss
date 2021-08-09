@@ -30,7 +30,7 @@
         height: 0;
         border-style: solid;
         border-width: 0 80px 139px 80px;
-        border-color: transparent transparent darken( $hexschool, 50) transparent;
+        border-color: transparent transparent darken( $hexschool, 62) transparent;
         transform: translate( -50%, 0) skewY( 10deg );
     
     
@@ -43,7 +43,7 @@
             height: 0;
             border-style: solid;
             border-width: 0 15px 139px 15px;
-            border-color: transparent transparent darken( $hexschool, 35) transparent;
+            border-color: transparent transparent darken( $hexschool, 55) transparent;
             transition: all .3s;
             z-index: -2;
         }
@@ -56,7 +56,7 @@
                 height: 0;
                 border-style: solid;
                 border-width: 0 7px 139px 7px;
-                border-color: transparent transparent darken( $hexschool, 60) transparent;
+                border-color: transparent transparent darken( $hexschool, 70) transparent;
                 transition: all .3s;
                 z-index: -1;
         }
@@ -64,8 +64,8 @@
     &.body {
         height: 134px;
         width: 139px;
-        background: linear-gradient( 180deg, darken( $hexschool, 50) 0%,
-                                            darken( $hexschool, 60) 100%,);
+        background: linear-gradient( 180deg, darken( $hexschool, 55) 0%,
+                                            darken( $hexschool, 65) 100%,);
         transform: skewX( 27.7deg ) translate( 48px, -10px) skewY(-10deg) perspective(10px) rotateY(1deg);
     }
 }

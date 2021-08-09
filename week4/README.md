@@ -1,183 +1,225 @@
 ###### tags: `六角學院` `Vue 3 新手夏令營`
 
-# ⛺ Vue 3 Options API
+# ⛺ Vue 3 Composition API
 
-[![week3](https://i.imgur.com/s0FUJXG.png)](https://johnsonmao.github.io/summer-camp-vue3/week3/)
-*第三週作業展示，運用了 Vue computed 與完整的 CRUD 功能，點擊圖片可察看成果*
+{%youtube 0LtUwttO0n4 %}
+*Kata 練習*
+
+[![week4](https://i.imgur.com/kGU8CAX.png)
+](https://johnsonmao.github.io/summer-camp-vue3/week4/)
+*第四週作業展示，運用了 Vue Composition API 與 watch 功能，點擊圖片可察看成果*
+
+[TOC]
 
 ## 課堂重點
 
-- 了解 methods 與 computed 的差別與運用
-- 稍微了解正則表達式，利用正則表達式增加千分點
-- mounted 生命週期函數發生後就會被釋放
+- Option API 與 Composition API 的差異
+- 了解 Vue 裡面 this 的指向
+- 生命週期的使用
+- ref 與 reative 的差別 ( 略提 )
 
-## 指令常見三大情境
+## Option API
 
-- 透過指令，觸發特定事件
-  - `@click="functionName()"`
-- 透過其他 Option API，觸發特定事件
-  - `this.functionName()`
-- 作為畫面上的資料運算 (俗稱 filter)
-  - 新版的 Vue 沒有 `filter`
+- 所有功能被依據**程式邏輯**區分
+- 對初學者來說相當**易學**
+- ==缺點==：商業、功能邏輯被**拆分**到各處
 
-### methods
+> ![Option API](https://i.imgur.com/9UUufnj.png)
+> *圖片展示 Option 的程式邏輯*
+> [name=卡斯伯]
 
-1. 透過指令，透過點擊或`Enter`鍵，觸發特定事件，範例如下
+- 藍色代表程式邏輯
+- 綠色與紅色分別為同一個功能所需要用的邏輯
 
-    ```htmlembedded
-    <!-- 擷取片段程式碼 -->
-    <input type="text" 
-        class="form-control flex-fill" 
-        @keyup.enter="addTodo"
-        v-model="newTodo"
-        placeholder="新增代辦事項"/>
-    <button type="button" 
-        class="btn btn-size-lg btn-dark rounded-1 m-1"
-        @click="addTodo">
-        <i class="fas fa-plus"></i>
-    </button>
-    ```
+## Option API 與 Composition API 的差異
 
-    ```javascript
-    // 擷取片段程式碼
-    Vue.createApp({
-        data() {
-        // ...
-        },
-        methods: {
-            // 新增 todo
-            addTodo() {
-                // 添加的 todo 名字不能空白
-                if( !this.newTodo.trim() ){
-                    alert('請輸入代辦事項');
-                    return
-                }
-                // 準備好一個 todo 物件
-                const item = { id: Date.now(), name: this.newTodo, done: false };
-                // 把 item 新增到 todos
-                this.todos = [item,...this.todos];
-                // 輸入完清空
-                this.newTodo = '';
-                // 刷新歷史紀錄
-                this.pushHistory();
-        }
-    }).mount('#app');
-    ```
+- 而 Composition 改善其缺點，將同一個商業、功能邏輯寫在一起
 
-### computed
+> ![比較](https://i.imgur.com/mfIeYp4.png)
+> *圖片展示 Composition 與 Option 的差別*
+> [name=卡斯伯]
 
-- 不修改原始數值的情況渲染出新值
+- 將分散在各處的功能邏輯集中在一起 (分散在各處的顏色集中在一起)
 
-    ```htmlembedded
-    <!-- 擷取片段程式碼 -->
-    <ul class="btn-group">
-        <!-- filter todo -->
-        <li class='col' :class=" filterType === 'all' ? 'active' : '' ">
-            <button class="btn" 
-            @click.prevent="filterType = 'all'">全部</button>
-        </li>
-        <li class='col' :class=" filterType === 'undone' ? 'active' : '' ">
-            <button class="btn" 
-            @click.prevent="filterType = 'undone'">待完成</button>
-        </li>
-        <li class='col' :class=" filterType === 'done' ? 'active' : '' ">
-            <button class="btn" 
-            @click.prevent="filterType = 'done'">已完成</button>
-        </li>
-    </ul>
-    ```
+## Composition API
 
-    ```javascript
-    // 解取片段程式碼
-    Vue.createApp({
-        data() {
-            // ...
-        },
-        computed: {
-            // 過濾分類清單
-            filterTodos() {
-                // 清單目前模式
-                switch ( this.filterType ) {
-                    case 'undone':
-                        return this.todos.filter( item => !item.done);
-                    case 'done':
-                        return this.todos.filter( item => item.done);
-                    default:
-                        return this.todos;
-            }
-        }
-    }).mount('#app');
-    ```
+- 全部整合進`setup()`內
+- 高度的彈性
+- 基於既有的 JS 知識開發
+- 方便引入函式庫
+- 所有功能邏輯都各自寫好，不會分散各地
 
-## CRUD 資料處理發想
+> ![Composition API](https://i.imgur.com/epx27MG.png)
+> *圖片展示 Composition 的寫法*
+> [name=卡斯伯]
 
-### 基本的 CRUD 包含了
+## Vue 的 this 指向
 
-- 新增資料
-- 刪除資料
-- 編輯資料
-- 陳列資料
-- 過濾資料
-- 修改個別資料的完成度
+- Proxy 是 Vue 在做雙向綁定的重要結構
+- 在 Option API 可以不知道他
+- 但在 Composition API 他還蠻重要的
+- 資料都會放在 Target 裡面
+![this](https://i.imgur.com/ToIog5E.png)
 
-```javascript
-Vue.createApp({
-    data() {
-        // ...
-    },
-    methods: {
-        // #1 如何新增資料
-        addTodo() {},
-        // #2 如何移除資料
-        deleteTodo( id ) {
-            // 找到當前按鈕那列的 index
-            const index = this.todos.findIndex( item => item.id === id);
-        },
-        // ...
-    }
-})
+## 複習 ESM
+
+[CDN 連結](https://cdnjs.com/libraries/vue)
+`https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js`
+
+![ESM](https://i.imgur.com/Rc0cV7M.png)
+*ESM 比較能依據自己需求來引入所需的功能*
+
+## Composition API 起手式
+
+### 通常都是使用 ESModule 來操作
+
+不轉ESM也行，但在composition API使用ESM更符合模組化概念
+
+```htmlembedded
+<!-- HTML -->
+<div id="app">
+    {{ text }}
+    <input type="text" v-model="text">
+</div>
 ```
 
-## 運用這次直播，稍微修改了第一週的作業
-
-1. 增加性別分類
-
-    ```javascript=
-    // computed 不會改動原始值
-    // watch 類似 methods, 會更動原始值
-    // “不修改原始數值” 的情況產生 “新值” （此值只為了渲染使用）
-
-    // 過濾列表
-    filterPersons() {
-        switch( this.genderFilter ){
-            // 當性別選擇為'all'，直接回傳
-            case 'all':
-                return this.persons;
-            // 當性別為'男'或'女'，自己對應
-            case this.genderFilter:
-                return this.persons.filter( item => 
-                    // 判斷男女後回傳
-                    item.gender === this.genderFilter );
+```javascript
+// JS
+<script type="module">
+    // 引入 ESM，script 的 type 記得改成 module
+    import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js'
+    // 用 ESM 就不用 Vue. 開頭
+    const app = createApp({
+        // Composition API 一定會有 setup
+        setup() {
+            const text = '卡斯伯棒棒';
+            // 需要回傳值，才能在 HTML 使用
+            return {
+                text
+            }
         }
-    }
-    ```
+    });
+    app.mount('#app');
+</script>
+```
 
-2. 幫選賞金增加千分點
+> ![卡斯伯棒棒](https://i.imgur.com/DecnIjV.png)
+> [name=卡斯伯]
 
-    ```javascript
-    toCurrency(num) {
-        // 把數字轉字串，利用小數點分割"整數"與"小數"
-        const parts = num.toString().split('.');
-        // 將整束用正則表達式每三個數字插入一個千分點
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        // 將整數與小數合併後回傳
-        return `${parts.join('.')}`;
-    }
-    ```
+### Composition API 裡雙向綁定，需要引入`ref`
 
-### 參考資料
+```javascript
+<script type="module">
+    // 引入 ref
+    import { createApp, ref } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js'
+    const app = createApp({
+        setup() {
+            // 使用 ref() 進行雙向綁定
+            const text = ref('卡斯伯棒棒');
+            // 需要回傳值，才能在 HTML 使用
+            return {
+                text
+            }
+        }
+    });
+    app.mount('#app');
+</script>
+```
 
-- [第三堂 - 共筆文件](https://hackmd.io/@dbFY0UD9SUeKmNXhWf01ew/BkJoW-hn_/%2FsXrYN8LKRwmBOi-vA_pQRQ)
-- [六角學院 Vue 3 夏令營](https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/)
+### Composition API 使用函式
+
+```javascript
+<script type="module">
+    import { createApp, ref } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js'
+    const app = createApp({
+        setup() {
+            const text = ref('卡斯伯棒棒');
+            // 新增你需要的函式
+            function getText() {
+                console.log( text )
+            }
+            // 需要回傳值，才能在 HTML 使用
+            return {
+                text,
+                getText,
+            }
+        }
+    });
+    app.mount('#app');
+</script>
+```
+
+## Composition API 使用生命週期
+
+### 引入 onMounted
+
+```javascript
+<script type="module">
+    import { createApp, ref, onMounted } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js'
+    const app = createApp({
+        setup() {
+            const text = ref('卡斯伯棒棒');
+            
+            function getText() {
+                console.log( text )
+            }
+            // 新增生命週期
+            onMounted(()=>{
+                getText()
+            })
+            // 需要回傳值，才能在 HTML 使用
+            return {
+                text,
+                getText,
+            }
+        }
+    });
+    app.mount('#app');
+</script>
+```
+
+### 引入 computed
+
+```javascript
+<script type="module">
+    import { createApp, ref, onMounted, computed } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js'
+    const app = createApp({
+        setup() {
+            const num = ref(1);
+            // 新增生命週期
+            const doubleNum = computed(()=>{
+                return num.value * 2
+            })
+            // 需要回傳值，才能在 HTML 使用
+            return {
+                num,
+                doubleNum,
+            }
+        }
+    });
+    app.mount('#app');
+</script>
+```
+
+> ![computed](https://i.imgur.com/LdFcJrh.gif)
+> *畫面呈現*
+> [name=卡斯伯]
+
+## reative 與 ref 的差別
+
+> ![ref & reative](https://i.imgur.com/5TW4tz8.png)
+> [name=卡斯伯]
+
+### reative
+
+- 非常標準的 Proxy 物件
+- 限制只能放物件
+- 覆蓋後會出現不可預期的錯誤
+
+### ref
+
+- 沒有任何型別的限制
+- 會依據放入的型別，而有不同的調整
+- 一定要使用`.value`取值
 
 {%hackmd @JohnsonMao/theme-Wood-Fired %}

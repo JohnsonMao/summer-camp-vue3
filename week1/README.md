@@ -5,6 +5,8 @@
 [![week1](https://i.imgur.com/E48VuxQ.jpg)](https://johnsonmao.github.io/summer-camp-vue3/week1/)
 *第一週作業展示，運用了 Vue 指令與 Ajax，點擊圖片可察看成果*
 
+[TOC]
+
 ## 課堂重點
 
 - 初學 Vue 起手式常用的三個值 `data` `methods` `mounted`

@@ -21,7 +21,7 @@
     <header class="activity_title m-0">
         <h1 class="m-0">
             <a href="https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/">
-                <img src="../tent.png" alt="summer camp">
+                <img src="../tent.png" alt="summer camp" class="me-3">
                 <span>六角學院 </span>Vue 3 <span>新手</span>夏令營
             </a>
         </h1>
@@ -86,7 +86,7 @@
                                 @keyup.enter="doneEdit( todo )"
                                 @keyup.esc="cancelEdit"
                                 @blur="doneEdit( todo )"
-                                v-model="cacheTodo.name" 
+                                v-model="cacheTodo.name"
                                 class="form-edit flex-fill" 
                                 type="text" />
                             <!-- toggle todo -->

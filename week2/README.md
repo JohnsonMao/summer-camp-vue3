@@ -5,6 +5,8 @@
 [![week2](https://i.imgur.com/Xd2g377.png)](https://johnsonmao.github.io/summer-camp-vue3/week2/)
 *第二週作業展示，運用了 Vue 進階指令與 localStrage，點擊圖片可察看成果*
 
+[TOC]
+
 ## 課堂重點
 
 - 可以用修飾符取得自己想要的資料型態。
