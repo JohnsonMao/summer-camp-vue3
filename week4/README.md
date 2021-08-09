@@ -6,13 +6,6 @@ date: 2021/8/4
 
 ###### tags: `六角學院` `Vue 3 新手夏令營`
 
-<<<<<<< HEAD
-# ⛺ Vue 3 Composition API
-
-{%youtube 0LtUwttO0n4 %}
-*Kata 練習*
-
-=======
 ###### *date: 2021/8/4*
 
 [![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2F4qy1obfUQIC0RTk4j-QT8g)
@@ -22,7 +15,6 @@ date: 2021/8/4
 {%youtube 0LtUwttO0n4 %}
 *Kata 練習*
 
->>>>>>> e1721710af63dd0ea2df455f824fe6c7c97c69cf
 [![week4](https://i.imgur.com/kGU8CAX.png)
 ](https://johnsonmao.github.io/summer-camp-vue3/week4/)
 *第四週作業展示，運用了 Vue Composition API 與 watch 功能，點擊圖片可察看成果*
@@ -239,5 +231,10 @@ date: 2021/8/4
 - 沒有任何型別的限制
 - 會依據放入的型別，而有不同的調整
 - 一定要使用`.value`取值
+
+### 參考資料
+
+- [第四堂 - 共筆文件](https://hackmd.io/@dbFY0UD9SUeKmNXhWf01ew/BkJoW-hn_/%2FQsUHeIKiReaY-Znhe0UyvA)
+- [六角學院 Vue 3 夏令營](https://www.hexschool.com/2021/07/07/2021-07-07-vue3-summer-camp/)
 
 {%hackmd @JohnsonMao/theme-Wood-Fired %}
