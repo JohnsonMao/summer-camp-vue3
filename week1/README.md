@@ -1,10 +1,14 @@
 ---
 title: Vue 3 起步走
 tags: 六角學院, Vue 3 新手夏令營
-date: 
+date: 2021/7/28
 ---
 
 ###### tags: `六角學院` `Vue 3 新手夏令營`
+
+###### *date: 2021/7/28*
+
+[![hackmd-github-sync-badge](https://hackmd.io/O8xSWPUHR1KoxiDBXiN15g/badge)](https://hackmd.io/@JohnsonMao/Front-end/%2FO8xSWPUHR1KoxiDBXiN15g)
 
 # ⛺ Vue 3 起步走
 
