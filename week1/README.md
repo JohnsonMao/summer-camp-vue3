@@ -1,9 +1,17 @@
+---
+title: Vue 3 起步走
+tags: 六角學院, Vue 3 新手夏令營
+date: 
+---
+
 ###### tags: `六角學院` `Vue 3 新手夏令營`
 
 # ⛺ Vue 3 起步走
 
 [![week1](https://i.imgur.com/E48VuxQ.jpg)](https://johnsonmao.github.io/summer-camp-vue3/week1/)
 *第一週作業展示，運用了 Vue 指令與 Ajax，點擊圖片可察看成果*
+
+[TOC]
 
 ## 課堂重點
 
@@ -213,7 +221,7 @@ methods: {
   </script>
   ```
 
-==ESM 如果沒有加 type = "module" 使用 import / export 會報錯==
+==注意==：ESM 如果沒有加 type = "module" 使用 import / export 會報錯
 
 ### 參考資料
 
